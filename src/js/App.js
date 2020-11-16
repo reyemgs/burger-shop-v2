@@ -5,6 +5,7 @@ import MenuList from './components/MenuList.js';
 class App {
     constructor() {
         this.response = null;
+        this.menuList = null;
         this.productCards = [];
         this.url = './js/data/data.json';
     }
@@ -13,7 +14,13 @@ class App {
         (async () => {
             await this.request(this.url);
             this.initProductCards();
+            this.initMenuList();
         })();
+    }
+
+    initMenuList() {
+        this.menuList = new MenuList(this.response.categories);
+        this.menuList.render();
     }
 
     initProductCards() {
