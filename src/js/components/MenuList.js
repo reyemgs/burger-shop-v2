@@ -2,13 +2,23 @@ export default class MenuList {
     constructor(props, handler) {
         this.items = props;
         this.eventHandler = handler;
-        this.onPage('pizza');
+    }
+
+    active(category) {
+        const categories = document.querySelectorAll('.menu-item');
+        for (const li of categories) {
+            li.classList.remove('active');
+            if (li.getAttribute('id') === category) {
+                li.classList.add('active');
+            }
+        }
     }
 
     onPage(category) {
         const rightSideWrapper = document.querySelector('#rightside-wrapper');
         rightSideWrapper.innerHTML = '';
         this.eventHandler.emit('renderByCategory', category);
+        this.active(category);
     }
 
     render() {
