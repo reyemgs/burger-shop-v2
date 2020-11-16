@@ -22,7 +22,7 @@ export default class ProductCard {
 
         const image = document.createElement('img');
         image.className = 'product-image';
-        image.setAttribute('src', './js/data/' + this.image);
+        image.setAttribute('src', `./js/data${this.image}`);
 
         const name = document.createElement('span');
         name.className = 'product-name';
@@ -63,13 +63,11 @@ export default class ProductCard {
         decreaseButton.setAttribute('data-decrease-id', this.id);
         decreaseButton.innerHTML = '<i class="fas fa-minus-circle"></i>';
 
-        quantityWrapper.append(quantityLabel, decreaseButton, quantity, increaseButton, inBasketButton);
-
         const rightSideWrapper = document.querySelector('#rightside-wrapper');
-
         const productCardWrapper = document.createElement('div');
         productCardWrapper.className = 'product-card-wrapper';
 
+        quantityWrapper.append(quantityLabel, decreaseButton, quantity, increaseButton, inBasketButton);
         productCardWrapper.append(market, image, name, description, price, quantityWrapper);
         rightSideWrapper.append(productCardWrapper);
     }
