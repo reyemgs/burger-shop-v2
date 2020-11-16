@@ -18,6 +18,7 @@ export default class ProductCard {
     }
 
     increaseQuantity() {
+        if (this.quantity === 99) return;
         this.quantity += 1;
         this.eventHandler.emit('changeQuantity');
     }
