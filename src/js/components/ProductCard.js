@@ -51,7 +51,7 @@ export default class ProductCard {
         const quantity = document.createElement('span');
         quantity.className = 'product-quantity';
         quantity.setAttribute('data-quantity-id', this.id);
-        quantity.innerHTML = this.productQuantity;
+        quantity.innerHTML = this.quantity;
 
         const increaseButton = document.createElement('div');
         increaseButton.className = 'increase-button';
