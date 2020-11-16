@@ -1,6 +1,14 @@
 export default class MenuList {
-    constructor(props) {
+    constructor(props, handler) {
         this.items = props;
+        this.eventHandler = handler;
+        this.onPage('pizza');
+    }
+
+    onPage(category) {
+        const rightSideWrapper = document.querySelector('#rightside-wrapper');
+        rightSideWrapper.innerHTML = '';
+        this.eventHandler.emit('renderByCategory', category);
     }
 
     render() {
@@ -10,6 +18,9 @@ export default class MenuList {
             li.setAttribute('id', item.category);
             li.className = 'menu-item';
             li.innerHTML = item.name;
+
+            li.addEventListener('click', () => this.onPage(item.category));
+
             ul.append(li);
         }
     }
