@@ -1,7 +1,16 @@
 export default class Basket {
-    constructor() {
+    constructor(props) {
         this.sideBar = document.querySelector('#sidebar-wrapper');
+        // this.eventHandler = props.eventHandler;
+        this.addedProducts = [];
         this.totalPrice = 0;
+    }
+
+    addProduct(product) {
+        const addedProduct = this.addedProducts.find(item => item === product);
+        if (!addedProduct) {
+            this.addedProducts.push(addedProduct);
+        }
     }
 
     render() {
