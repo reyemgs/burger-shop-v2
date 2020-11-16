@@ -17,6 +17,17 @@ export default class ProductCard {
         this.eventHandler = handler;
     }
 
+    increaseQuantity() {
+        this.quantity += 1;
+    }
+
+    decreaseQuantity() {
+        if (this.quantity === 1) return;
+        else {
+            this.quantity -= 1;
+        }
+    }
+
     addInBasket() {
         this.eventHandler.emit('addInBasket', this);
     }
@@ -73,6 +84,14 @@ export default class ProductCard {
         const productCardWrapper = document.createElement('div');
         productCardWrapper.className = 'product-card-wrapper';
 
+        increaseButton.addEventListener('click', () => {
+            this.increaseQuantity();
+            quantity.innerHTML = this.quantity;
+        });
+        decreaseButton.addEventListener('click', () => {
+            this.decreaseQuantity();
+            quantity.innerHTML = this.quantity;
+        });
         inBasketButton.addEventListener('click', () => this.addInBasket());
 
         quantityWrapper.append(quantityLabel, decreaseButton, quantity, increaseButton, inBasketButton);
