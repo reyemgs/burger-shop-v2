@@ -141,4 +141,44 @@ header .fa-bars {
   border-radius: 8px;
 }
 
+#sidebar-wrapper {
+  position: fixed;
+  top: 50px;
+  width: 25%;
+  height: 100%;
+  transition: all 200ms;
+}
+#sidebar-wrapper .menu-list {
+  padding: 0px;
+  margin: 20px auto 0px;
+  width: 90%;
+  background: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  -webkit-user-select: none;
+}
+#sidebar-wrapper .menu-list .menu-item {
+  padding: 10px 15px;
+  width: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  list-style: none;
+  color: #6b581a;
+}
+#sidebar-wrapper .menu-list .menu-item.active {
+  background: linear-gradient(45deg, #fad045, #ff9900d3);
+  border-bottom: 2px solid #ff9900d3;
+}
+#sidebar-wrapper .menu-list .menu-item:hover {
+  background: linear-gradient(45deg, #fad045, #ff9900d3);
+}
+#sidebar-wrapper .menu-list .menu-item:first-child {
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}
+#sidebar-wrapper .menu-list .menu-item:last-child {
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
 /*# sourceMappingURL=output.css.map */

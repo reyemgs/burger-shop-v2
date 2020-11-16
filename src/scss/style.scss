@@ -12,6 +12,16 @@ $price: #aa3535;
 $modal-items: #fa6045;
 $prev-next-buttons: #e6583f;
 
+@mixin border-top-radius {
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+@mixin border-bottom-radius {
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
 * {
     margin: 0;
     box-sizing: border-box;
@@ -150,6 +160,44 @@ header {
                 outline: none;
                 background: $yellow;
                 border-radius: 8px;
+            }
+        }
+    }
+}
+
+#sidebar-wrapper {
+    position: fixed;
+    top: 50px;
+    width: 25%;
+    height: 100%;
+    transition: all 200ms;
+    .menu-list {
+        padding: 0px;
+        margin: 20px auto 0px;
+        width: 90%;
+        background: $white;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        -webkit-user-select: none;
+        .menu-item {
+            padding: 10px 15px;
+            width: 100%;
+            font-size: 20px;
+            font-weight: bold;
+            list-style: none;
+            color: $yellow-text;
+            &.active {
+                background: linear-gradient(45deg, $yellow, $yellow-card);
+                border-bottom: 2px solid $yellow-card;
+            }
+            &:hover {
+                background: linear-gradient(45deg, $yellow, $yellow-card);
+            }
+            &:first-child {
+                @include border-top-radius();
+            }
+            &:last-child {
+                @include border-bottom-radius();
             }
         }
     }
