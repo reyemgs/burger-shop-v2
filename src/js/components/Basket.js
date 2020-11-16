@@ -16,13 +16,6 @@ export default class Basket {
         }
     }
 
-    addProduct(product) {
-        const addedProduct = this.addedProducts.find(item => item === product);
-        if (!addedProduct) {
-            this.addedProducts.push(addedProduct);
-        }
-    }
-
     render() {
         const wrapper = document.createElement('div');
         wrapper.className = 'basket';
