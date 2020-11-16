@@ -31,11 +31,6 @@ export default class ProductCard {
         this.eventHandler.emit('changeQuantity');
     }
 
-    updateQuantity(id) {
-        const quantity = document.querySelector(`.product-quantity[data-quantity-id="${id}"`);
-        quantity.innerHTML = this.quantity;
-    }
-
     addInBasket() {
         this.eventHandler.emit('addInBasket', this);
     }
