@@ -6,6 +6,7 @@ export default class ProductCard {
         this.price = props.price;
         this.description = props.description;
         this.market = props.market;
+        this.marketImage = props.marketImage;
         this.category = props.category;
         this.type = props.type;
         this.weight = props.weight;
@@ -15,9 +16,13 @@ export default class ProductCard {
     }
 
     render() {
+        const market = document.createElement('img');
+        market.className = 'product-market';
+        market.setAttribute('src', `./js/data${this.marketImage}`);
+
         const image = document.createElement('img');
         image.className = 'product-image';
-        image.setAttribute('src', '/data/' + this.image);
+        image.setAttribute('src', './js/data/' + this.image);
 
         const name = document.createElement('span');
         name.className = 'product-name';
@@ -29,7 +34,7 @@ export default class ProductCard {
 
         const price = document.createElement('span');
         price.className = 'product-price';
-        price.innerHTML = `Цена: ${product.price} руб.`;
+        price.innerHTML = `Цена: ${this.price} руб.`;
 
         const quantityLabel = document.createElement('span');
         quantityLabel.className = 'product-quantity-label';

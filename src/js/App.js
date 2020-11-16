@@ -19,10 +19,11 @@ class App {
         let id = 1;
         for (let product of this.response.menu) {
             product.id = id++;
+            product.marketImage = this.response.markets[product.market].image;
             const productCard = new ProductCard(product);
             this.productCards.push(productCard);
+            productCard.render();
         }
-        console.log(this.productCards);
     }
 
     async request(url) {
