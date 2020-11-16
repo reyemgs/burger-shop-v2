@@ -19,6 +19,7 @@ export default class ProductCard {
 
     increaseQuantity() {
         this.quantity += 1;
+        this.eventHandler.emit('changeQuantity');
     }
 
     decreaseQuantity() {
@@ -26,6 +27,7 @@ export default class ProductCard {
         else {
             this.quantity -= 1;
         }
+        this.eventHandler.emit('changeQuantity');
     }
 
     addInBasket() {
