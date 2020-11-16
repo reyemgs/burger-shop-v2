@@ -35,14 +35,13 @@ body {
 header {
     position: fixed;
     margin: auto;
-    height: 60px;
+    height: 40px;
     width: 100%;
     text-align: center;
     background: $yellow;
     span {
         display: block;
-        padding-top: 10px;
-        font-size: 35px;
+        font-size: 30px;
         font-weight: bold;
         color: $yellow-text;
         -webkit-user-select: none;
@@ -50,8 +49,8 @@ header {
     .fa-bars {
         position: absolute;
         display: block;
-        top: 5px;
-        left: 25px;
+        top: 3px;
+        left: 10px;
         color: $yellow-text;
     }
 }
