@@ -8,6 +8,12 @@ export default class Basket {
 
         this.eventHandler.on('addInBasket', product => {
             this.addProduct(product);
+            this.updateTotalPrice();
+        });
+
+        this.eventHandler.on('changeQuantity', () => {
+            this.renderAddedProducts();
+            this.updateTotalPrice();
         });
     }
 
@@ -17,14 +23,21 @@ export default class Basket {
             this.addedProducts.push(product);
         }
         this.renderAddedProducts();
-        console.log(this.addedProducts);
     }
 
     removeProduct(product) {
         const index = this.addedProducts.find(item => item === product);
         this.addedProducts.splice(index, 1);
         this.renderAddedProducts();
-        console.log(this.addedProducts);
+    }
+
+    updateTotalPrice() {
+        const totalPriceLabel = document.querySelector('.basket-total-price');
+        this.totalPrice = 0;
+        for (const item of this.addedProducts) {
+            this.totalPrice += item.price * item.quantity;
+        }
+        totalPriceLabel.innerHTML = `Итого: ${this.totalPrice} руб.`;
     }
 
     renderAddedProducts() {
@@ -46,7 +59,10 @@ export default class Basket {
             removeButton.className = 'remove-button';
             removeButton.innerHTML = '<i class="fas fa-trash-alt fa-lg"></i>';
 
-            removeButton.addEventListener('click', () => this.removeProduct(item));
+            removeButton.addEventListener('click', () => {
+                this.removeProduct(item);
+                this.updateTotalPrice();
+            });
 
             productWrapper.append(productName, productQuantity, removeButton);
             contentWrapper.append(productWrapper);
