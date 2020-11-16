@@ -8,7 +8,6 @@ export default class Basket {
 
         this.eventHandler.on('addInBasket', product => {
             this.addProduct(product);
-            this.renderAddedProducts();
         });
     }
 
@@ -17,6 +16,15 @@ export default class Basket {
         if (!addedProduct) {
             this.addedProducts.push(product);
         }
+        this.renderAddedProducts();
+        console.log(this.addedProducts);
+    }
+
+    removeProduct(product) {
+        const index = this.addedProducts.find(item => item === product);
+        this.addedProducts.splice(index, 1);
+        this.renderAddedProducts();
+        console.log(this.addedProducts);
     }
 
     renderAddedProducts() {
@@ -37,6 +45,8 @@ export default class Basket {
             const removeButton = document.createElement('div');
             removeButton.className = 'remove-button';
             removeButton.innerHTML = '<i class="fas fa-trash-alt fa-lg"></i>';
+
+            removeButton.addEventListener('click', () => this.removeProduct(item));
 
             productWrapper.append(productName, productQuantity, removeButton);
             contentWrapper.append(productWrapper);
