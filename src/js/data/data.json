@@ -1522,5 +1522,36 @@
       "name": "Донер Кебаб",
       "image": "/i/markets/doner.png"
     }
-  }
+  },
+  "categories": [
+    {
+      "category": "pizza",
+      "name": "Пицца"
+    },
+    {
+      "category": "shaurma", 
+      "name": "Шаурма"
+    },
+    {
+      "category": "sandwiches",
+      "name": "Сендвичи"
+    },
+    {
+      "category": "burgers",
+      "name": "Бургеры"
+    },
+    {
+      "category": "chicken",
+      "name": "Курица & Картофель"
+    },
+    {
+      "category": "salads", 
+      "name": "Тортилья & Салаты"
+    },
+    {
+      "category": "drinks",
+      "name": "Напитки & Десерты"
+    }
+  ]
+
 }
