@@ -7,12 +7,17 @@ import EventHandler from './components/EventHandler.js';
 class App {
     constructor() {
         this.response = null;
-        this.eventHandler = new EventHandler();
         this.productCards = [];
         this.url = './js/data/data.json';
 
         this.menuList = null;
         this.basket = null;
+
+        this.eventHandler = new EventHandler();
+
+        this.eventHandler.on('renderByCategory', category => {
+            this.renderProductsByCategory(category);
+        });
     }
 
     async request(url) {
@@ -29,14 +34,15 @@ class App {
     }
 
     initComponents() {
-        this.initSideBar();
         this.initProductCards();
+        this.initSideBar();
     }
 
     initSideBar() {
-        this.menuList = new MenuList(this.response.categories);
-        this.basket = new Basket(this.eventHandler);
+        this.menuList = new MenuList(this.response.categories, this.eventHandler);
         this.menuList.render();
+
+        this.basket = new Basket(this.eventHandler);
         this.basket.render();
     }
 
@@ -47,7 +53,13 @@ class App {
             product.marketImage = this.response.markets[product.market].image;
             const productCard = new ProductCard(product, this.eventHandler);
             this.productCards.push(productCard);
-            productCard.render();
+        }
+    }
+
+    renderProductsByCategory(category) {
+        const filtered = this.productCards.filter(item => item.category === category);
+        for (const product of filtered) {
+            product.render();
         }
     }
 }
