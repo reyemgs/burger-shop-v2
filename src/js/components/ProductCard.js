@@ -1,12 +1,11 @@
 export default class ProductCard {
     constructor(props) {
-        this.id = props.menu.id;
+        this.id = props.id;
         this.name = props.name;
         this.image = props.image;
         this.price = props.price;
         this.description = props.description;
         this.market = props.market;
-        this.marketImage = props.
         this.category = props.category;
         this.type = props.type;
         this.weight = props.weight;
