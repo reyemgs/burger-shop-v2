@@ -2,10 +2,12 @@ import Fetch from './api/Fetch.js';
 import ProductCard from './components/ProductCard.js';
 import MenuList from './components/MenuList.js';
 import Basket from './components/Basket.js';
+import EventHandler from './components/EventHandler.js';
 
 class App {
     constructor() {
         this.response = null;
+        this.eventHandler = new EventHandler();
         this.productCards = [];
         this.url = './js/data/data.json';
 
@@ -33,7 +35,7 @@ class App {
 
     initSideBar() {
         this.menuList = new MenuList(this.response.categories);
-        this.basket = new Basket();
+        this.basket = new Basket(this.eventHandler);
         this.menuList.render();
         this.basket.render();
     }
@@ -43,7 +45,7 @@ class App {
         for (let product of this.response.menu) {
             product.id = id++;
             product.marketImage = this.response.markets[product.market].image;
-            const productCard = new ProductCard(product);
+            const productCard = new ProductCard(product, this.eventHandler);
             this.productCards.push(productCard);
             productCard.render();
         }

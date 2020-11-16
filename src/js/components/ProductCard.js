@@ -1,5 +1,5 @@
 export default class ProductCard {
-    constructor(props) {
+    constructor(props, handler) {
         this.id = props.id;
         this.name = props.name;
         this.image = props.image;
@@ -13,6 +13,12 @@ export default class ProductCard {
         this.components = props.components;
         this.quantity = 1;
         this.added = false;
+
+        this.eventHandler = handler;
+    }
+
+    addInBasket() {
+        this.eventHandler.emit('addInBasket', this);
     }
 
     render() {
@@ -66,6 +72,8 @@ export default class ProductCard {
         const rightSideWrapper = document.querySelector('#rightside-wrapper');
         const productCardWrapper = document.createElement('div');
         productCardWrapper.className = 'product-card-wrapper';
+
+        inBasketButton.addEventListener('click', () => this.addInBasket());
 
         quantityWrapper.append(quantityLabel, decreaseButton, quantity, increaseButton, inBasketButton);
         productCardWrapper.append(market, image, name, description, price, quantityWrapper);
