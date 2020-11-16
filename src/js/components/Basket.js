@@ -1,12 +1,15 @@
 export default class Basket {
     constructor(handler) {
-        this.sideBar = document.querySelector('#sidebar-wrapper');
+        this.basketWrapper = document.querySelector('.basket');
         this.addedProducts = [];
         this.totalPrice = 0;
 
         this.eventHandler = handler;
 
-        this.eventHandler.on('addInBasket', product => this.addProduct(product));
+        this.eventHandler.on('addInBasket', product => {
+            this.addProduct(product);
+            this.renderAddedProducts();
+        });
     }
 
     addProduct(product) {
@@ -16,10 +19,31 @@ export default class Basket {
         }
     }
 
-    render() {
-        const wrapper = document.createElement('div');
-        wrapper.className = 'basket';
+    renderAddedProducts() {
+        const contentWrapper = document.querySelector('.basket-content-wrapper');
+        contentWrapper.innerHTML = '';
+        this.addedProducts.map(item => {
+            const productWrapper = document.createElement('div');
+            productWrapper.className = 'basket-product';
 
+            const productName = document.createElement('span');
+            productName.className = 'basket-product-name';
+            productName.innerHTML = item.name;
+
+            const productQuantity = document.createElement('span');
+            productQuantity.className = 'basket-product-quantity';
+            productQuantity.innerHTML = item.quantity;
+
+            const removeButton = document.createElement('div');
+            removeButton.className = 'remove-button';
+            removeButton.innerHTML = '<i class="fas fa-trash-alt fa-lg"></i>';
+
+            productWrapper.append(productName, productQuantity, removeButton);
+            contentWrapper.append(productWrapper);
+        });
+    }
+
+    render() {
         const header = document.createElement('span');
         header.className = 'basket-header';
         header.innerHTML = '<i class="fas fa-shopping-basket"></i> Корзина';
@@ -51,7 +75,6 @@ export default class Basket {
 
         labelWrapper.append(nameLabel, quantityLabel);
         body.append(labelWrapper, productsWrapper, totalPriceLabel, orderButton);
-        wrapper.append(header, body);
-        this.sideBar.append(wrapper);
+        this.basketWrapper.append(header, body);
     }
 }
