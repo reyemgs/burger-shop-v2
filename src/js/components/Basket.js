@@ -27,12 +27,7 @@ export default class Basket {
 
     removeProduct(product) {
         const index = this.addedProducts.findIndex(item => item === product);
-        const id = this.addedProducts[index].id;
-
-        this.addedProducts[index].quantity = 1;
-        this.addedProducts[index].updateQuantity(id);
         this.addedProducts.splice(index, 1);
-
         this.renderAddedProducts();
     }
 
