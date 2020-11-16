@@ -1,5 +1,6 @@
 import Fetch from './api/Fetch.js';
 import ProductCard from './components/ProductCard.js';
+import MenuList from './components/MenuList.js';
 
 class App {
     constructor() {
