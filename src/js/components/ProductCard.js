@@ -98,6 +98,7 @@ export default class ProductCard {
         inBasketButton.addEventListener('click', () => {
             if (this.type === 'multiple') {
                 this.eventHandler.emit('openModal', this);
+                return;
             }
             this.addInBasket();
         });
