@@ -2,26 +2,57 @@ export default class Modal {
     constructor(props, handler) {
         this.navigationItems = props;
         this.currentProduct = null;
+        this.currentPage = null;
+
         this.eventHandler = handler;
 
         this.eventHandler.on('openModal', product => this.open(product));
     }
 
     open(product) {
-        this.active();
+        this.currentPage = 1;
+        this.currentProduct = product;
+        this.activeModal();
         document.body.style.overflow = 'hidden';
     }
 
     close() {
-        this.active();
+        this.currentProduct = null;
+        this.activeModal();
         document.body.removeAttribute('style');
     }
 
-    active() {
+    activeModal() {
         const wrapper = document.querySelector('.modal-wrapper');
         const shadow = document.querySelector('.shadow-modal');
         wrapper.classList.toggle('active');
         shadow.classList.toggle('active');
+    }
+
+    nextPage() {
+        if (this.currentPage === this.navigationItems.length) return;
+
+        this.currentPage += 1;
+        const menuItem = this.getMenuItem(this.currentPage);
+        const title = document.querySelector('.modal-title');
+        title.innerHTML = menuItem.title;
+    }
+
+    previousPage() {
+        if (this.currentPage === 1) return;
+
+        this.currentPage -= 1;
+        const menuItem = this.getMenuItem(this.currentPage);
+        const title = document.querySelector('.modal-title');
+        title.innerHTML = menuItem.title;
+    }
+
+    // activePage(category) {
+
+    // }
+
+    getMenuItem(id) {
+        return this.navigationItems.find(item => item.id === id);
     }
 
     render() {
@@ -34,8 +65,6 @@ export default class Modal {
         const closeButton = document.createElement('div');
         closeButton.className = 'close-modal';
         closeButton.innerHTML = '<i class="fas fa-times fa-2x"></i>';
-
-        closeButton.addEventListener('click', () => this.close());
 
         const buttonWrapper = document.createElement('div');
         buttonWrapper.className = 'modal-button-wrapper';
@@ -80,6 +109,10 @@ export default class Modal {
 
             ul.append(li);
         }
+
+        nextButton.addEventListener('click', () => this.nextPage());
+        previousButton.addEventListener('click', () => this.previousPage());
+        closeButton.addEventListener('click', () => this.close());
 
         const itemWrapper = document.createElement('div');
         itemWrapper.className = 'items-wrapper';
