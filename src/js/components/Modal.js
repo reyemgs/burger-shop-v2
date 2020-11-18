@@ -12,6 +12,11 @@ export default class Modal {
         document.body.style.overflow = 'hidden';
     }
 
+    close() {
+        this.active();
+        document.body.style.overflow = 'visible';
+    }
+
     active() {
         const wrapper = document.querySelector('.modal-wrapper');
         const shadow = document.querySelector('.shadow-modal');
@@ -29,6 +34,8 @@ export default class Modal {
         const closeButton = document.createElement('div');
         closeButton.className = 'close-modal';
         closeButton.innerHTML = '<i class="fas fa-times fa-2x"></i>';
+
+        closeButton.addEventListener('click', () => this.close());
 
         const buttonWrapper = document.createElement('div');
         buttonWrapper.className = 'modal-button-wrapper';
