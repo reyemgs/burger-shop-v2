@@ -44,7 +44,7 @@ export default class Modal {
         const ul = document.createElement('ul');
         ul.className = 'items-list';
 
-        for (const item of this.menuItems) {
+        for (const item of this.navigationItems) {
             const li = document.createElement('li');
 
             li.setAttribute('data-category', item.category);
