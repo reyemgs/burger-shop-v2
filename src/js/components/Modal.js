@@ -3,9 +3,11 @@ export default class Modal {
         this.navigationItems = props;
         this.currentProduct = null;
         this.eventHandler = handler;
+
+        this.eventHandler.on('openModal', product => this.open(product));
     }
 
-    open() {
+    open(product) {
         this.active();
         document.body.style.overflow = 'hidden';
     }
