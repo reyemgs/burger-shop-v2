@@ -358,6 +358,10 @@ header .fa-bars {
   }
 }
 .modal-wrapper {
+  opacity: 0;
+  visibility: hidden;
+}
+.modal-wrapper.active {
   position: fixed;
   z-index: 1000;
   opacity: 1;
@@ -369,20 +373,6 @@ header .fa-bars {
   background: #ececec;
   border-radius: 10px;
   transform: translate(-50%, -50%);
-}
-.modal-wrapper.active {
-  display: block;
-  position: fixed;
-  left: 25%;
-  top: 10%;
-  visibility: visible;
-  opacity: 1;
-  z-index: 1000;
-  width: 50%;
-  opacity: 1;
-  transition: opacity 0.15s ease;
-  background: #ececec;
-  border-radius: 10px;
 }
 .modal-wrapper .modal-header {
   height: 50px;
@@ -648,23 +638,8 @@ header .fa-bars {
 }
 
 .shadow-modal {
-  visibility: visible;
-  position: fixed;
-  border: none;
-  display: block;
-  width: 100%;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 98;
+  visibility: hidden;
   opacity: 0;
-  transition: opacity 0.15s ease;
-  background-color: black;
-  pointer-events: auto;
-  opacity: 0.6;
 }
 .shadow-modal.active {
   visibility: visible;
