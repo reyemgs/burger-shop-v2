@@ -14,7 +14,7 @@ export default class Modal {
 
     close() {
         this.active();
-        document.body.style.overflow = 'visible';
+        document.body.removeAttribute('style');
     }
 
     active() {
