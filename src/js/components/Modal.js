@@ -12,13 +12,20 @@ export default class Modal {
     open(product) {
         this.currentPage = 1;
         this.currentProduct = product;
+
+        const menuItem = this.getMenuItem(this.currentPage);
         this.activeModal();
+        this.activePage(menuItem);
+
         document.body.style.overflow = 'hidden';
     }
 
     close() {
         this.currentProduct = null;
+        this.currentPage = null;
+
         this.activeModal();
+
         document.body.removeAttribute('style');
     }
 
@@ -31,25 +38,32 @@ export default class Modal {
 
     nextPage() {
         if (this.currentPage === this.navigationItems.length) return;
-
         this.currentPage += 1;
+
         const menuItem = this.getMenuItem(this.currentPage);
-        const title = document.querySelector('.modal-title');
-        title.innerHTML = menuItem.title;
+        this.activePage(menuItem);
     }
 
     previousPage() {
         if (this.currentPage === 1) return;
-
         this.currentPage -= 1;
+
         const menuItem = this.getMenuItem(this.currentPage);
-        const title = document.querySelector('.modal-title');
-        title.innerHTML = menuItem.title;
+        this.activePage(menuItem);
     }
 
-    // activePage(category) {
+    activePage(menuItem) {
+        const items = document.querySelectorAll('.modal-menu-item');
 
-    // }
+        for (const item of items) {
+            item.classList.remove('active');
+            if (item.getAttribute('data-category') === menuItem.category) {
+                const title = document.querySelector('.modal-title');
+                item.classList.add('active');
+                title.innerHTML = menuItem.title;
+            }
+        }
+    }
 
     getMenuItem(id) {
         return this.navigationItems.find(item => item.id === id);
