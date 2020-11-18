@@ -133,8 +133,17 @@ header .fa-bars {
   padding: 10px 20px;
   color: #6b581a;
 }
-#rightside-wrapper .product-card-wrapper .set-quantity-wrapper .increase-button:hover,
-#rightside-wrapper .product-card-wrapper .set-quantity-wrapper .decrease-button:hover {
+#rightside-wrapper .product-card-wrapper .set-quantity-wrapper .increase-button .fa-plus-circle,
+#rightside-wrapper .product-card-wrapper .set-quantity-wrapper .increase-button .fa-minus-circle,
+#rightside-wrapper .product-card-wrapper .set-quantity-wrapper .decrease-button .fa-plus-circle,
+#rightside-wrapper .product-card-wrapper .set-quantity-wrapper .decrease-button .fa-minus-circle {
+  transition: 0.5s;
+}
+#rightside-wrapper .product-card-wrapper .set-quantity-wrapper .increase-button .fa-plus-circle:hover,
+#rightside-wrapper .product-card-wrapper .set-quantity-wrapper .increase-button .fa-minus-circle:hover,
+#rightside-wrapper .product-card-wrapper .set-quantity-wrapper .decrease-button .fa-plus-circle:hover,
+#rightside-wrapper .product-card-wrapper .set-quantity-wrapper .decrease-button .fa-minus-circle:hover {
+  transform: rotate(180deg);
   color: #fa6045;
 }
 #rightside-wrapper .product-card-wrapper .set-quantity-wrapper .in-basket-button {
@@ -349,19 +358,17 @@ header .fa-bars {
   }
 }
 .modal-wrapper {
-  display: block;
-  position: absolute;
-  left: 25%;
-  top: 10%;
-  visibility: visible;
-  opacity: 1;
+  position: fixed;
   z-index: 1000;
-  width: 60%;
   opacity: 1;
-  transition: opacity 0.15s ease;
+  visibility: visible;
+  width: 80%;
+  max-height: 80%;
+  top: 50%;
+  left: 50%;
   background: #ececec;
   border-radius: 10px;
-  -webkit-user-select: none;
+  transform: translate(-50%, -50%);
 }
 .modal-wrapper.active {
   display: block;
@@ -400,47 +407,58 @@ header .fa-bars {
 .modal-wrapper .modal-header .close-modal:hover {
   color: #fa6045;
 }
+.modal-wrapper .modal-header .close-modal .fa-times {
+  transition: 0.5s;
+}
+.modal-wrapper .modal-header .close-modal .fa-times:hover {
+  transform: rotate(180deg);
+}
+.modal-wrapper .modal-button-wrapper {
+  margin: auto;
+  text-align: center;
+  padding: 10px;
+}
+.modal-wrapper .modal-button-wrapper .previous-button {
+  display: inline;
+  width: 80px;
+  height: 30px;
+  font-weight: bold;
+  font-size: 15px;
+  border: 2px solid #fa6045;
+  border-radius: 10px;
+  outline: none;
+  color: #ffffff;
+  background: #fa6045;
+}
+.modal-wrapper .modal-button-wrapper .previous-button:hover {
+  background: #ff9900d3;
+  border: 2px solid #ff9900;
+  color: #6b581a;
+}
+.modal-wrapper .modal-button-wrapper .next-button {
+  display: inline;
+  width: 80px;
+  height: 30px;
+  font-weight: bold;
+  font-size: 15px;
+  border: 2px solid #fa6045;
+  border-radius: 10px;
+  outline: none;
+  color: #ffffff;
+  background: #fa6045;
+}
+.modal-wrapper .modal-button-wrapper .next-button:hover {
+  background: #ff9900d3;
+  border: 2px solid #ff9900;
+  color: #6b581a;
+}
 .modal-wrapper .items-wrapper {
-  padding: 20px;
+  padding: 10px;
   margin: auto;
   margin-bottom: 20px;
   height: 50px;
   text-align: center;
   vertical-align: bottom;
-}
-.modal-wrapper .items-wrapper .previous-button {
-  display: inline;
-  width: 100px;
-  height: 30px;
-  font-weight: bold;
-  font-size: 18px;
-  border: 2px solid #fa6045;
-  border-radius: 10px;
-  outline: none;
-  color: #ffffff;
-  background: #fa6045;
-}
-.modal-wrapper .items-wrapper .previous-button:hover {
-  background: #ff9900d3;
-  border: 2px solid #ff9900;
-  color: #6b581a;
-}
-.modal-wrapper .items-wrapper .next-button {
-  display: inline;
-  width: 100px;
-  height: 30px;
-  font-weight: bold;
-  font-size: 18px;
-  border: 2px solid #fa6045;
-  border-radius: 10px;
-  outline: none;
-  color: #ffffff;
-  background: #fa6045;
-}
-.modal-wrapper .items-wrapper .next-button:hover {
-  background: #ff9900d3;
-  border: 2px solid #ff9900;
-  color: #6b581a;
 }
 .modal-wrapper .items-wrapper .items-list {
   display: inline;
@@ -450,9 +468,8 @@ header .fa-bars {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
   display: inline;
   padding: 10px;
-  width: 10px;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 15px;
   color: #6b581a;
   background-color: #ffffff;
   -webkit-user-select: none;
@@ -475,7 +492,7 @@ header .fa-bars {
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
-  height: 500px;
+  height: 100%;
   overflow-y: scroll;
 }
 .modal-wrapper .modal-content .ingridient-wrapper {

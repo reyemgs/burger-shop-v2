@@ -23,10 +23,10 @@ $prev-next-buttons: #e6583f;
 }
 
 @mixin prev-next-buttons {
-    width: 100px;
+    width: 80px;
     height: 30px;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 15px;
     border: 2px solid $modal-items;
     border-radius: 10px;
     outline: none;
@@ -186,8 +186,13 @@ header {
                 padding: 10px 20px;
                 color: $yellow-text;
 
-                &:hover {
-                    color: $modal-items;
+                .fa-plus-circle,
+                .fa-minus-circle {
+                    transition: 0.5s;
+                    &:hover {
+                        transform: rotate(180deg);
+                        color: $modal-items;
+                    }
                 }
             }
 
@@ -407,19 +412,17 @@ header {
 }
 
 .modal-wrapper {
-    display: block;
-    position: absolute;
-    left: 25%;
-    top: 10%;
-    visibility: visible;
-    opacity: 1;
+    position: fixed;
     z-index: 1000;
-    width: 60%;
     opacity: 1;
-    transition: opacity 0.15s ease;
+    visibility: visible;
+    width: 80%;
+    max-height: 80%;
+    top: 50%;
+    left: 50%;
     background: $body-background;
     border-radius: 10px;
-    -webkit-user-select: none;
+    transform: translate(-50%, -50%);
     &.active {
         display: block;
         position: fixed;
@@ -455,15 +458,19 @@ header {
             &:hover {
                 color: $modal-items;
             }
+            .fa-times {
+                transition: 0.5s;
+            }
+            .fa-times:hover {
+                transform: rotate(180deg);
+            }
         }
     }
-    .items-wrapper {
-        padding: 20px;
+
+    .modal-button-wrapper {
         margin: auto;
-        margin-bottom: 20px;
-        height: 50px;
         text-align: center;
-        vertical-align: bottom;
+        padding: 10px;
         .previous-button {
             display: inline;
             @include prev-next-buttons();
@@ -472,6 +479,15 @@ header {
             display: inline;
             @include prev-next-buttons();
         }
+    }
+
+    .items-wrapper {
+        padding: 10px;
+        margin: auto;
+        margin-bottom: 20px;
+        height: 50px;
+        text-align: center;
+        vertical-align: bottom;
         .items-list {
             display: inline;
             padding: 20px;
@@ -479,9 +495,8 @@ header {
                 box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
                 display: inline;
                 padding: 10px;
-                width: 10px;
                 font-weight: bold;
-                font-size: 18px;
+                font-size: 15px;
                 color: $yellow-text;
                 background-color: $white;
                 -webkit-user-select: none;
@@ -507,7 +522,7 @@ header {
         flex-wrap: wrap;
         justify-content: center;
         width: 100%;
-        height: 500px;
+        height: 100%;
         overflow-y: scroll;
         .ingridient-wrapper {
             width: 220px;

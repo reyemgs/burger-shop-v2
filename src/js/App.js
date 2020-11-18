@@ -61,7 +61,7 @@ class App {
     }
 
     initModal() {
-        this.modal = new Modal(this.response.modal);
+        this.modal = new Modal(this.response.modal, this.eventHandler);
         this.modal.render();
     }
 

@@ -15,6 +15,9 @@ export default class Modal {
         closeButton.className = 'close-modal';
         closeButton.innerHTML = '<i class="fas fa-times fa-2x"></i>';
 
+        const buttonWrapper = document.createElement('div');
+        buttonWrapper.className = 'modal-button-wrapper';
+
         const nextButton = document.createElement('button');
         nextButton.className = 'next-button';
         nextButton.innerHTML = 'ВПЕРЕД';
@@ -22,6 +25,8 @@ export default class Modal {
         const previousButton = document.createElement('button');
         previousButton.className = 'previous-button';
         previousButton.innerHTML = 'НАЗАД';
+
+        buttonWrapper.append(previousButton, nextButton);
 
         const inBasketButton = document.createElement('button');
         inBasketButton.className = 'modal-in-basket';
@@ -56,12 +61,12 @@ export default class Modal {
 
         const itemWrapper = document.createElement('div');
         itemWrapper.className = 'items-wrapper';
-        itemWrapper.append(previousButton, ul, nextButton);
+        itemWrapper.append(ul);
 
         const shadow = document.createElement('div');
         shadow.classList.add('shadow-modal');
 
-        wrapper.append(header, itemWrapper, content, footer);
+        wrapper.append(header, buttonWrapper, itemWrapper, content, footer);
         document.body.append(wrapper, shadow);
     }
 }
