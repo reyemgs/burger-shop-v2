@@ -589,6 +589,17 @@ header .fa-bars {
   opacity: 0.6;
 }
 
+@media (min-width: 768px) {
+  .modal-title {
+    font-size: 30px;
+    color: #ffffff;
+  }
+
+  .modal-menu-item {
+    font-size: 18px;
+    padding: 10px;
+  }
+}
 @media (max-width: 924px) {
   #sidebar-wrapper {
     width: 40%;
@@ -635,15 +646,9 @@ header .fa-bars {
     font-size: 20px;
     color: #ffffff;
   }
-}
-@media (min-width: 768px) {
-  .modal-title {
-    font-size: 30px;
-    color: #ffffff;
-  }
 
   .modal-menu-item {
-    font-size: 18px;
+    font-size: 13px;
     padding: 10px;
   }
 }

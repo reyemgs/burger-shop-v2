@@ -617,6 +617,18 @@ header {
     }
 }
 
+@media (min-width: 768px) {
+    .modal-title {
+        font-size: 30px;
+        color: $white;
+    }
+
+    .modal-menu-item {
+        font-size: 18px;
+        padding: 10px;
+    }
+}
+
 @media (max-width: 924px) {
     #sidebar-wrapper {
         width: 40%;
@@ -669,19 +681,13 @@ header {
         font-size: 20px;
         color: $white;
     }
-}
-
-@media (min-width: 768px) {
-    .modal-title {
-        font-size: 30px;
-        color: $white;
-    }
 
     .modal-menu-item {
-        font-size: 18px;
+        font-size: 13px;
         padding: 10px;
     }
 }
+
 
 @media (max-width: 610px) {
     .modal-wrapper {
