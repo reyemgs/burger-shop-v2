@@ -136,6 +136,7 @@ export default class Modal {
         shadow.classList.add('shadow-modal');
 
         wrapper.append(header, buttonWrapper, itemWrapper, content, footer);
-        document.body.append(wrapper, shadow);
+        const rightSideWrapper = document.querySelector('#rightside-wrapper');
+        rightSideWrapper.after(wrapper, shadow);
     }
 }
