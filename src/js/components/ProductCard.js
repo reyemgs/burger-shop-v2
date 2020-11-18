@@ -95,7 +95,12 @@ export default class ProductCard {
             this.decreaseQuantity();
             quantity.innerHTML = this.quantity;
         });
-        inBasketButton.addEventListener('click', () => this.addInBasket());
+        inBasketButton.addEventListener('click', () => {
+            if (this.type === 'multiple') {
+                this.eventHandler.emit('openModal', this);
+            }
+            this.addInBasket();
+        });
 
         quantityWrapper.append(quantityLabel, decreaseButton, quantity, increaseButton, inBasketButton);
         productCardWrapper.append(market, image, name, description, price, quantityWrapper);
