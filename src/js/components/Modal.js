@@ -1,7 +1,20 @@
 export default class Modal {
     constructor(props, handler) {
         this.navigationItems = props;
+        this.currentProduct = null;
         this.eventHandler = handler;
+    }
+
+    open() {
+        this.active();
+        document.body.style.overflow = 'hidden';
+    }
+
+    active() {
+        const wrapper = document.querySelector('.modal-wrapper');
+        const shadow = document.querySelector('.shadow-modal');
+        wrapper.classList.toggle('active');
+        shadow.classList.toggle('active');
     }
 
     render() {
