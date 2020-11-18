@@ -3,6 +3,7 @@ import ProductCard from './components/ProductCard.js';
 import MenuList from './components/MenuList.js';
 import Basket from './components/Basket.js';
 import EventHandler from './components/EventHandler.js';
+import Modal from './components/Modal.js';
 
 class App {
     constructor() {
@@ -12,6 +13,7 @@ class App {
 
         this.menuList = null;
         this.basket = null;
+        this.modal = null;
 
         this.eventHandler = new EventHandler();
 
@@ -36,6 +38,7 @@ class App {
     initComponents() {
         this.initProductCards();
         this.initSideBar();
+        this.initModal();
     }
 
     initSideBar() {
@@ -55,6 +58,11 @@ class App {
             const productCard = new ProductCard(product, this.eventHandler);
             this.productCards.push(productCard);
         }
+    }
+
+    initModal() {
+        this.modal = new Modal(this.response.modal);
+        this.modal.render();
     }
 
     renderProductsByCategory(category) {
