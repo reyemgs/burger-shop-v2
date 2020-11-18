@@ -1529,7 +1529,7 @@
       "name": "Пицца"
     },
     {
-      "category": "shaurma", 
+      "category": "shaurma",
       "name": "Шаурма"
     },
     {
@@ -1545,13 +1545,50 @@
       "name": "Курица & Картофель"
     },
     {
-      "category": "salads", 
+      "category": "salads",
       "name": "Тортилья & Салаты"
     },
     {
       "category": "drinks",
       "name": "Напитки & Десерты"
     }
+  ],
+  "modal": [
+    {
+    "id": 1,
+    "category": "sizes",
+    "name": "Размер",
+    "title": "Выберите размер сендвича"
+    },
+    {
+    "id": 2,
+    "category": "breads",
+    "name": "Хлеб",
+    "title": "Хлеб для сендвича на выбор"
+    },
+    {
+    "id": 3,
+    "category": "vegetables",
+    "name": "Овощи",
+    "title": "Дополнительные овощи бесплатно"
+    },
+    {
+    "id": 4,
+    "category": "sauces",
+    "name": "Соусы",
+    "title": "Выберите 3 бесплатных соуса по вкусу"
+    },
+    {
+    "id": 5,
+    "category": "fillings",
+    "name": "Начинка",
+    "title": "Добавьте начинку по вкусу"
+    },
+    {
+    "id": 6,
+    "category": "done",
+    "name": "Готово!",
+    "title": "Проверьте и добавьте в корзину"
+    }
   ]
-
 }
