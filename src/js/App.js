@@ -4,12 +4,15 @@ import MenuList from './components/MenuList.js';
 import Basket from './components/Basket.js';
 import EventHandler from './components/EventHandler.js';
 import Modal from './components/Modal.js';
+import IngridientCard from './components/IngridientCard.js';
 
 class App {
     constructor() {
         this.response = null;
-        this.productCards = [];
         this.url = './js/data/data.json';
+
+        this.productCards = [];
+        this.ingridientCards = [];
 
         this.menuList = null;
         this.basket = null;
@@ -37,6 +40,7 @@ class App {
 
     initComponents() {
         this.initProductCards();
+        this.initIngridientCards();
         this.initSideBar();
         this.initModal();
     }
@@ -50,6 +54,11 @@ class App {
         this.basket.render();
     }
 
+    initModal() {
+        this.modal = new Modal(this.response.modal, this.eventHandler);
+        this.modal.render();
+    }
+
     initProductCards() {
         let id = 1;
         for (let product of this.response.menu) {
@@ -60,9 +69,20 @@ class App {
         }
     }
 
-    initModal() {
-        this.modal = new Modal(this.response.modal, this.eventHandler);
-        this.modal.render();
+    initIngridientCards() {
+        let id = 1;
+        const ingridients = this.response.ingridients;
+        for (let key in ingridients) {
+            for (let props in ingridients[key]) {
+                let ingridient = ingridients[key][props];
+
+                ingridient.id = id++;
+                ingridient.category = key;
+
+                const ingridientCard = new IngridientCard(ingridient, this.eventHandler);
+                this.ingridientCards.push(ingridientCard);
+            }
+        }
     }
 
     renderProductsByCategory(category) {
