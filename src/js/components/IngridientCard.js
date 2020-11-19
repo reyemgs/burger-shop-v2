@@ -13,12 +13,29 @@ export default class IngridientCard {
     }
 
     active() {
+        if (this.type === 'single') {
+            this.activeSingle();
+        } else if (this.type === 'multiple') {
+            this.activeMultiple();
+        }
+    }
+
+    activeSingle() {
         const ingridients = document.querySelectorAll('.ingridient-wrapper');
         for (const item of ingridients) {
             item.classList.remove('active');
             if (item.getAttribute('data-ingridient-id') == this.id) {
                 console.log(true);
                 item.classList.add('active');
+            }
+        }
+    }
+
+    activeMultiple() {
+        const ingridients = document.querySelectorAll('.ingridient-wrapper');
+        for (const item of ingridients) {
+            if (item.getAttribute('data-ingridient-id') == this.id) {
+                item.classList.toggle('active');
             }
         }
     }
