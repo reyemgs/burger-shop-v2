@@ -40,27 +40,44 @@ export default class Modal {
     }
 
     nextPage() {
-        if (this.currentPage === this.navigationItems.length) return;
-        this.currentPage += 1;
+        if (this.isLastPage()) {
+            return;
+        }
 
+        this.currentPage += 1;
         const content = document.querySelector('.modal-content');
         const menuItem = this.getMenuItem(this.currentPage);
-        this.activePage(menuItem);
 
+        if (this.isLastPage()) {
+            this.onDonePage(content, menuItem);
+            return;
+        }
+
+        this.activePage(menuItem);
         content.innerHTML = '';
         this.eventHandler.emit('renderIngridientsByCategory', menuItem.category);
     }
 
     previousPage() {
         if (this.currentPage === 1) return;
-        this.currentPage -= 1;
 
+        this.currentPage -= 1;
         const content = document.querySelector('.modal-content');
         const menuItem = this.getMenuItem(this.currentPage);
-        this.activePage(menuItem);
 
+        this.activePage(menuItem);
         content.innerHTML = '';
         this.eventHandler.emit('renderIngridientsByCategory', menuItem.category);
+    }
+
+    onDonePage(content, menuItem) {
+        content.innerHTML = '';
+        this.renderDonePage();
+        this.activePage(menuItem);
+    }
+
+    isLastPage() {
+        return this.currentPage === this.navigationItems.length;
     }
 
     activePage(menuItem) {
@@ -78,6 +95,54 @@ export default class Modal {
 
     getMenuItem(id) {
         return this.navigationItems.find(item => item.id === id);
+    }
+
+    renderDonePage() {
+        const product = this.currentProduct;
+        const footer = document.querySelector('.modal-footer');
+
+        const wrapper = document.createElement('div');
+        wrapper.className = 'done-wrapper';
+
+        const header = document.createElement('span');
+        header.className = 'done-header';
+        header.innerHTML = 'Ваш сендвич готов!';
+
+        const info = document.createElement('div');
+        info.className = 'done-info';
+
+        const size = document.createElement('span');
+        size.className = 'done-size';
+        size.innerHTML = `Размер: `;
+
+        const bread = document.createElement('span');
+        bread.className = 'done-bread';
+        bread.innerHTML = `Хлеб: `;
+
+        const vegetables = document.createElement('span');
+        vegetables.className = 'done-vegetables';
+        vegetables.innerHTML = `Овощи: `;
+
+        const sauces = document.createElement('span');
+        sauces.className = 'done-sauces';
+        sauces.innerHTML = `Соусы: `;
+
+        const fillings = document.createElement('span');
+        fillings.className = 'done-fillings';
+        fillings.innerHTML = `Начинка: `;
+
+        const name = document.createElement('span');
+        name.className = 'done-name';
+        name.innerHTML = `${product.name}`;
+
+        const image = document.createElement('img');
+        image.className = 'product-image';
+        image.setAttribute('src', `./js/data${product.image}`);
+
+        const content = document.querySelector('.modal-content');
+        info.append(size, bread, vegetables, sauces, fillings);
+        wrapper.append(header, info, name);
+        content.append(image, wrapper);
     }
 
     render() {
