@@ -6,6 +6,7 @@ export default class IngridientCard {
         this.image = props.image;
         this.description = props.description;
         this.category = props.category;
+        this.key = props.key;
 
         this.eventHandler = handler;
     }
@@ -21,11 +22,18 @@ export default class IngridientCard {
         }
     }
 
+    addInComponents() {
+        this.eventHandler.emit('addIngridient', this);
+    }
+
     render() {
         const wrapper = document.createElement('div');
         wrapper.className = 'ingridient-wrapper';
         wrapper.setAttribute('data-ingridient-id', this.id);
-        wrapper.addEventListener('click', () => this.active());
+        wrapper.addEventListener('click', () => {
+            this.active();
+            this.addInComponents();
+        });
 
         const image = document.createElement('img');
         image.className = 'ingridient-image';
