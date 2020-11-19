@@ -7,6 +7,7 @@ export default class IngridientCard {
         this.description = props.description;
         this.category = props.category;
         this.key = props.key;
+        this.type = props.type;
 
         this.eventHandler = handler;
     }
