@@ -20,8 +20,12 @@ class App {
 
         this.eventHandler = new EventHandler();
 
-        this.eventHandler.on('renderByCategory', category => {
+        this.eventHandler.on('renderProductsByCategory', category => {
             this.renderProductsByCategory(category);
+        });
+
+        this.eventHandler.on('renderIngridientsByCategory', category => {
+            this.renderIngridientsByCategory(category);
         });
     }
 
@@ -88,6 +92,13 @@ class App {
         const filtered = this.productCards.filter(item => item.category === category);
         for (const product of filtered) {
             product.render();
+        }
+    }
+
+    renderIngridientsByCategory(category) {
+        const filtered = this.ingridientCards.filter(item => item.category === category);
+        for (const ingridient of filtered) {
+            ingridient.render();
         }
     }
 }

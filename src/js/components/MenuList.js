@@ -17,7 +17,7 @@ export default class MenuList {
     onPage(category) {
         const rightSideWrapper = document.querySelector('#rightside-wrapper');
         rightSideWrapper.innerHTML = '';
-        this.eventHandler.emit('renderByCategory', category);
+        this.eventHandler.emit('renderProductsByCategory', category);
         this.active(category);
     }
 
