@@ -16,8 +16,9 @@ export default class Modal {
         const menuItem = this.getMenuItem(this.currentPage);
         this.activeModal();
         this.activePage(menuItem);
-
         document.body.style.overflow = 'hidden';
+
+        this.eventHandler.emit('renderIngridientsByCategory', menuItem.category);
     }
 
     close() {
@@ -40,16 +41,23 @@ export default class Modal {
         if (this.currentPage === this.navigationItems.length) return;
         this.currentPage += 1;
 
+        const content = document.querySelector('.modal-content');
         const menuItem = this.getMenuItem(this.currentPage);
+
         this.activePage(menuItem);
+        content.innerHTML = '';
+        this.eventHandler.emit('renderIngridientsByCategory', menuItem.category);
     }
 
     previousPage() {
         if (this.currentPage === 1) return;
         this.currentPage -= 1;
 
+        const content = document.querySelector('.modal-content');
         const menuItem = this.getMenuItem(this.currentPage);
         this.activePage(menuItem);
+        content.innerHTML = '';
+        this.eventHandler.emit('renderIngridientsByCategory', menuItem.category);
     }
 
     activePage(menuItem) {
