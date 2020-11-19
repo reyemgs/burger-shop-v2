@@ -77,11 +77,12 @@ class App {
     initIngridientCards() {
         let id = 1;
         this.ingridients = this.response.ingridients;
-        for (let key in this.ingridients) {
-            for (let props in this.ingridients[key]) {
-                let ingridient = this.ingridients[key][props];
+        for (let category in this.ingridients) {
+            for (let key in this.ingridients[category]) {
+                let ingridient = this.ingridients[category][key];
                 ingridient.id = id++;
-                ingridient.category = key;
+                ingridient.category = category;
+                ingridient.key = key;
 
                 const ingridientCard = new IngridientCard(ingridient, this.eventHandler);
                 this.ingridientCards.push(ingridientCard);
