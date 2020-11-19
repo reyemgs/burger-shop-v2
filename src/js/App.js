@@ -13,6 +13,7 @@ class App {
 
         this.productCards = [];
         this.ingridientCards = [];
+        this.ingridients = {};
 
         this.menuList = null;
         this.basket = null;
@@ -59,7 +60,7 @@ class App {
     }
 
     initModal() {
-        this.modal = new Modal(this.response.modal, this.eventHandler);
+        this.modal = new Modal(this.response.modal, this.ingridients, this.eventHandler);
         this.modal.render();
     }
 
@@ -75,10 +76,10 @@ class App {
 
     initIngridientCards() {
         let id = 1;
-        const ingridients = this.response.ingridients;
-        for (let key in ingridients) {
-            for (let props in ingridients[key]) {
-                let ingridient = ingridients[key][props];
+        this.ingridients = this.response.ingridients;
+        for (let key in this.ingridients) {
+            for (let props in this.ingridients[key]) {
+                let ingridient = this.ingridients[key][props];
                 ingridient.id = id++;
                 ingridient.category = key;
 
