@@ -75,7 +75,6 @@ class App {
         for (let key in ingridients) {
             for (let props in ingridients[key]) {
                 let ingridient = ingridients[key][props];
-
                 ingridient.id = id++;
                 ingridient.category = key;
 
