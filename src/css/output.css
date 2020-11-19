@@ -232,7 +232,7 @@ header .fa-bars {
 #sidebar-wrapper .basket .basket-body .basket-content-wrapper {
   display: block;
   width: 90%;
-  max-height: 150px;
+  max-height: 280px;
   margin: auto;
   padding: 5px 15px;
   overflow-y: scroll;
