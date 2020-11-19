@@ -42,6 +42,7 @@ export default class Modal {
 
         const menuItem = this.getMenuItem(this.currentPage);
         this.activePage(menuItem);
+        this.eventHandler.emit('renderIngridientsByCategory', menuItem.category);
     }
 
     previousPage() {
@@ -50,6 +51,7 @@ export default class Modal {
 
         const menuItem = this.getMenuItem(this.currentPage);
         this.activePage(menuItem);
+        this.eventHandler.emit('renderIngridientsByCategory', menuItem.category);
     }
 
     activePage(menuItem) {
