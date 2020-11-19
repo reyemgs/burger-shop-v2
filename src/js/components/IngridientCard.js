@@ -25,8 +25,8 @@ export default class IngridientCard {
         for (const item of ingridients) {
             item.classList.remove('active');
             if (item.getAttribute('data-ingridient-id') == this.id) {
-                console.log(true);
                 item.classList.add('active');
+                this.eventHandler.emit('addIngridient', this);
             }
         }
     }
@@ -36,6 +36,11 @@ export default class IngridientCard {
         for (const item of ingridients) {
             if (item.getAttribute('data-ingridient-id') == this.id) {
                 item.classList.toggle('active');
+                if (!item.classList.contains('active')) {
+                    this.eventHandler.emit('removeIngridient', this);
+                } else {
+                    this.eventHandler.emit('addIngridient', this);
+                }
             }
         }
     }
@@ -50,7 +55,7 @@ export default class IngridientCard {
         wrapper.setAttribute('data-ingridient-id', this.id);
         wrapper.addEventListener('click', () => {
             this.active();
-            this.addInComponents();
+            // this.addInComponents();
         });
 
         const image = document.createElement('img');
