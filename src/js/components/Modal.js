@@ -7,9 +7,17 @@ export default class Modal {
 
         this.eventHandler = handler;
 
-        this.eventHandler.on('openModal', product => this.open(product));
+        this.eventHandler.on('openModal', product => {
+            this.open(product);
+        });
 
-        this.eventHandler.on('addIngridient', ingridient => this.addIngridient(ingridient));
+        this.eventHandler.on('addIngridient', ingridient => {
+            this.addIngridient(ingridient);
+        });
+
+        this.eventHandler.on('removeIngridient', ingridient => {
+            this.removeIngridient(ingridient);
+        });
     }
 
     open(product) {
@@ -101,12 +109,22 @@ export default class Modal {
     }
 
     addIngridient(ingridient) {
+        console.clear();
         const components = this.currentProduct.components;
         if (ingridient.type === 'single') {
             components[ingridient.category] = ingridient.key;
         } else {
             components[ingridient.category].push(ingridient.key);
         }
+        console.table(this.currentProduct.components);
+    }
+
+    removeIngridient(ingridient) {
+        console.clear();
+        const components = this.currentProduct.components;
+        const index = components[ingridient.category].findIndex(item => item === ingridient.key);
+        components[ingridient.category].splice(index, 1);
+        console.table(this.currentProduct.components);
     }
 
     renderDonePage() {
