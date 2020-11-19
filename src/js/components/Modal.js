@@ -102,7 +102,11 @@ export default class Modal {
 
     addIngridient(ingridient) {
         const components = this.currentProduct.components;
-        components[ingridient.category] = ingridient.key;
+        if (ingridient.type === 'single') {
+            components[ingridient.category] = ingridient.key;
+        } else {
+            components[ingridient.category].push(ingridient.key);
+        }
     }
 
     renderDonePage() {
