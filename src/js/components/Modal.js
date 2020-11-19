@@ -107,7 +107,17 @@ export default class Modal {
 
     renderDonePage() {
         const product = this.currentProduct;
-        const components = product.components;
+
+        const {
+            sizes: productSizes,
+            breads: productBreads,
+            vegetables: productVegetables,
+            sauces: productSauces,
+            fillings: productFillings,
+        } = product.components;
+
+        const { sizes, breads, vegetables, sauces, fillings } = this.ingridients;
+
         const footer = document.querySelector('.modal-footer');
 
         const wrapper = document.createElement('div');
@@ -120,25 +130,25 @@ export default class Modal {
         const info = document.createElement('div');
         info.className = 'done-info';
 
-        const size = document.createElement('span');
-        size.className = 'done-size';
-        size.innerHTML = `Размер: ${this.ingridients.sizes[components.sizes].name} `;
+        const sizeElem = document.createElement('span');
+        sizeElem.className = 'done-size';
+        sizeElem.innerHTML = `Размер: ${sizes[productSizes].name} `;
 
-        const bread = document.createElement('span');
-        bread.className = 'done-bread';
-        bread.innerHTML = `Хлеб: ${this.ingridients.breads[components.breads].name}`;
+        const breadElem = document.createElement('span');
+        breadElem.className = 'done-bread';
+        breadElem.innerHTML = `Хлеб: ${breads[productBreads].name}`;
 
-        const vegetables = document.createElement('span');
-        vegetables.className = 'done-vegetables';
-        vegetables.innerHTML = `Овощи: `;
+        const vegetablesElem = document.createElement('span');
+        vegetablesElem.className = 'done-vegetables';
+        vegetablesElem.innerHTML = `Овощи: `;
 
-        const sauces = document.createElement('span');
-        sauces.className = 'done-sauces';
-        sauces.innerHTML = `Соусы: `;
+        const saucesElem = document.createElement('span');
+        saucesElem.className = 'done-sauces';
+        saucesElem.innerHTML = `Соусы: `;
 
-        const fillings = document.createElement('span');
-        fillings.className = 'done-fillings';
-        fillings.innerHTML = `Начинка: `;
+        const fillingsElem = document.createElement('span');
+        fillingsElem.className = 'done-fillings';
+        fillingsElem.innerHTML = `Начинка: `;
 
         const name = document.createElement('span');
         name.className = 'done-name';
@@ -149,7 +159,7 @@ export default class Modal {
         image.setAttribute('src', `./js/data${product.image}`);
 
         const content = document.querySelector('.modal-content');
-        info.append(size, bread, vegetables, sauces, fillings);
+        info.append(sizeElem, breadElem, vegetablesElem, saucesElem, fillingsElem);
         wrapper.append(header, info, name);
         content.append(image, wrapper);
     }
