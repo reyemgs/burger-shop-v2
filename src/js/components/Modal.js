@@ -8,6 +8,8 @@ export default class Modal {
         this.eventHandler = handler;
 
         this.eventHandler.on('openModal', product => this.open(product));
+
+        this.eventHandler.on('addIngridient', ingridient => this.addIngridient(ingridient));
     }
 
     open(product) {
@@ -96,6 +98,11 @@ export default class Modal {
 
     getMenuItem(id) {
         return this.navigationItems.find(item => item.id === id);
+    }
+
+    addIngridient(ingridient) {
+        const components = this.currentProduct.components;
+        components[ingridient.category] = ingridient.key;
     }
 
     renderDonePage() {
