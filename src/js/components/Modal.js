@@ -13,11 +13,13 @@ export default class Modal {
         this.currentPage = 1;
         this.currentProduct = product;
 
+        const content = document.querySelector('.modal-content');
         const menuItem = this.getMenuItem(this.currentPage);
         this.activeModal();
         this.activePage(menuItem);
-        document.body.style.overflow = 'hidden';
 
+        document.body.style.overflow = 'hidden';
+        content.innerHTML = '';
         this.eventHandler.emit('renderIngridientsByCategory', menuItem.category);
     }
 
@@ -43,8 +45,8 @@ export default class Modal {
 
         const content = document.querySelector('.modal-content');
         const menuItem = this.getMenuItem(this.currentPage);
-
         this.activePage(menuItem);
+
         content.innerHTML = '';
         this.eventHandler.emit('renderIngridientsByCategory', menuItem.category);
     }
@@ -56,6 +58,7 @@ export default class Modal {
         const content = document.querySelector('.modal-content');
         const menuItem = this.getMenuItem(this.currentPage);
         this.activePage(menuItem);
+
         content.innerHTML = '';
         this.eventHandler.emit('renderIngridientsByCategory', menuItem.category);
     }
