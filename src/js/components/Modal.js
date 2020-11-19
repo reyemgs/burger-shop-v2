@@ -1,6 +1,7 @@
 export default class Modal {
-    constructor(props, handler) {
+    constructor(props, ingridients, handler) {
         this.navigationItems = props;
+        this.ingridients = ingridients;
         this.currentProduct = null;
         this.currentPage = null;
 
@@ -99,6 +100,7 @@ export default class Modal {
 
     renderDonePage() {
         const product = this.currentProduct;
+        const components = product.components;
         const footer = document.querySelector('.modal-footer');
 
         const wrapper = document.createElement('div');
@@ -113,11 +115,11 @@ export default class Modal {
 
         const size = document.createElement('span');
         size.className = 'done-size';
-        size.innerHTML = `Размер: `;
+        size.innerHTML = `Размер: ${this.ingridients.sizes[components.sizes].name} `;
 
         const bread = document.createElement('span');
         bread.className = 'done-bread';
-        bread.innerHTML = `Хлеб: `;
+        bread.innerHTML = `Хлеб: ${this.ingridients.breads[components.breads].name}`;
 
         const vegetables = document.createElement('span');
         vegetables.className = 'done-vegetables';
