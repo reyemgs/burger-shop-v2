@@ -10,10 +10,22 @@ export default class IngridientCard {
         this.eventHandler = handler;
     }
 
+    active() {
+        const ingridients = document.querySelectorAll('.ingridient-wrapper');
+        for (const item of ingridients) {
+            item.classList.remove('active');
+            if (item.getAttribute('data-ingridient-id') == this.id) {
+                console.log(true);
+                item.classList.add('active');
+            }
+        }
+    }
+
     render() {
         const wrapper = document.createElement('div');
         wrapper.className = 'ingridient-wrapper';
         wrapper.setAttribute('data-ingridient-id', this.id);
+        wrapper.addEventListener('click', () => this.active());
 
         const image = document.createElement('img');
         image.className = 'ingridient-image';
