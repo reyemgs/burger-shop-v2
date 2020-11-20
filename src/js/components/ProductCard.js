@@ -16,6 +16,10 @@ export default class ProductCard {
         this.addedIngridients = [];
 
         this.eventHandler = handler;
+
+        this.eventHandler.on('setDefaultIngridients', ingridient =>
+            this.setDefaultIngridients(ingridient)
+        );
     }
 
     increaseQuantity() {
@@ -48,6 +52,12 @@ export default class ProductCard {
         const index = this.addedIngridients.findIndex(item => item === ingridient);
         this.addedIngridients.splice(index, 1);
         console.log(this.addedIngridients);
+    }
+
+    setDefaultIngridients(ingridient) {
+        if (this.category === 'sandwiches' && this.components[ingridient.category] === ingridient.key) {
+            this.addedIngridients.push(ingridient);
+        }
     }
 
     render() {

@@ -11,6 +11,10 @@ export default class IngridientCard {
         this.currentWrapper = null;
 
         this.eventHandler = handler;
+
+        if (this.type === 'single') {
+            this.eventHandler.emit('setDefaultIngridients', this);
+        }
     }
 
     addActiveClass() {
