@@ -189,7 +189,7 @@ header {
 
                 .fa-plus-circle,
                 .fa-minus-circle {
-                    transition: 0.5s;
+                    transition: 0.3s;
                     &:hover {
                         transform: scale(1.2, 1.2) rotate(180deg);
                         color: $modal-items;
@@ -209,7 +209,7 @@ header {
                 border: 2px solid $yellow;
                 border-radius: 5px;
                 outline: none;
-                transition: 0.5s;
+                transition: 0.3s;
                 &:hover {
                     background: $yellow-in-basket;
                     border: 2px solid $yellow-in-basket;
@@ -363,7 +363,7 @@ header {
         z-index: 1000;
         opacity: 1;
         visibility: visible;
-        width: 80%;
+        width: 60%;
         max-height: 80%;
         top: 50%;
         left: 50%;

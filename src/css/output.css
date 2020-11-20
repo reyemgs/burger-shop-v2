@@ -137,7 +137,7 @@ header .fa-hamburger:hover {
 #rightside-wrapper .product-card-wrapper .set-quantity-wrapper .increase-button .fa-minus-circle,
 #rightside-wrapper .product-card-wrapper .set-quantity-wrapper .decrease-button .fa-plus-circle,
 #rightside-wrapper .product-card-wrapper .set-quantity-wrapper .decrease-button .fa-minus-circle {
-  transition: 0.5s;
+  transition: 0.3s;
 }
 #rightside-wrapper .product-card-wrapper .set-quantity-wrapper .increase-button .fa-plus-circle:hover,
 #rightside-wrapper .product-card-wrapper .set-quantity-wrapper .increase-button .fa-minus-circle:hover,
@@ -158,7 +158,7 @@ header .fa-hamburger:hover {
   border: 2px solid #fad045;
   border-radius: 5px;
   outline: none;
-  transition: 0.5s;
+  transition: 0.3s;
 }
 #rightside-wrapper .product-card-wrapper .set-quantity-wrapper .in-basket-button:hover {
   background: #ffad33;
@@ -314,7 +314,7 @@ header .fa-hamburger:hover {
   z-index: 1000;
   opacity: 1;
   visibility: visible;
-  width: 80%;
+  width: 60%;
   max-height: 80%;
   top: 50%;
   left: 50%;
