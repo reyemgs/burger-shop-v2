@@ -8,55 +8,47 @@ export default class IngridientCard {
         this.category = props.category;
         this.key = props.key;
         this.type = props.type;
+        this.currentWrapper = null;
 
         this.eventHandler = handler;
     }
 
-    active() {
-        if (this.type === 'single') {
-            this.activeSingle();
-        } else if (this.type === 'multiple') {
-            this.activeMultiple();
-        }
-    }
+    // active() {
+    //     if (this.type === 'single') {
+    //         this.activeSingle();
+    //     } else if (this.type === 'multiple') {
+    //         this.activeMultiple();
+    //     }
+    // }
 
-    activeSingle() {
-        const ingridients = document.querySelectorAll('.ingridient-wrapper');
-        for (const item of ingridients) {
-            item.classList.remove('active');
-            if (item.getAttribute('data-ingridient-id') == this.id) {
-                item.classList.add('active');
-                this.eventHandler.emit('addIngridient', this);
-            }
-        }
-    }
+    // activeSingle() {
+    //     const ingridients = document.querySelectorAll('.ingridient-wrapper');
+    //     for (const item of ingridients) {
+    //         item.classList.remove('active');
+    //         if (item.getAttribute('data-ingridient-id') == this.id) {
+    //             item.classList.add('active');
+    //         }
+    //     }
+    // }
 
-    activeMultiple() {
-        const ingridients = document.querySelectorAll('.ingridient-wrapper');
-        for (const item of ingridients) {
-            if (item.getAttribute('data-ingridient-id') == this.id) {
-                item.classList.toggle('active');
-                if (!item.classList.contains('active')) {
-                    this.eventHandler.emit('removeIngridient', this);
-                } else {
-                    this.eventHandler.emit('addIngridient', this);
-                }
-            }
-        }
-    }
-
-    addInComponents() {
-        this.eventHandler.emit('addIngridient', this);
-    }
+    // activeMultiple() {
+    //     const ingridients = document.querySelectorAll('.ingridient-wrapper');
+    //     for (const item of ingridients) {
+    //         if (item.getAttribute('data-ingridient-id') == this.id) {
+    //             item.classList.toggle('active');
+    //         }
+    //     }
+    // }
 
     render() {
         const wrapper = document.createElement('div');
         wrapper.className = 'ingridient-wrapper';
         wrapper.setAttribute('data-ingridient-id', this.id);
         wrapper.addEventListener('click', () => {
+            this.eventHandler.emit('addIngridient', this);
             this.active();
-            // this.addInComponents();
         });
+        this.currentWrapper = wrapper;
 
         const image = document.createElement('img');
         image.className = 'ingridient-image';
