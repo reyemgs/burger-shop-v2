@@ -12,7 +12,6 @@ export default class ProductCard {
         this.weight = props.weight;
         this.components = props.components;
         this.quantity = 1;
-        this.added = false;
 
         this.eventHandler = handler;
     }
