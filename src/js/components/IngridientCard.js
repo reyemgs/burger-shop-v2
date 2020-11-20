@@ -13,32 +13,13 @@ export default class IngridientCard {
         this.eventHandler = handler;
     }
 
-    // active() {
-    //     if (this.type === 'single') {
-    //         this.activeSingle();
-    //     } else if (this.type === 'multiple') {
-    //         this.activeMultiple();
-    //     }
-    // }
+    addActiveClass() {
+        this.currentWrapper.classList.add('active');
+    }
 
-    // activeSingle() {
-    //     const ingridients = document.querySelectorAll('.ingridient-wrapper');
-    //     for (const item of ingridients) {
-    //         item.classList.remove('active');
-    //         if (item.getAttribute('data-ingridient-id') == this.id) {
-    //             item.classList.add('active');
-    //         }
-    //     }
-    // }
-
-    // activeMultiple() {
-    //     const ingridients = document.querySelectorAll('.ingridient-wrapper');
-    //     for (const item of ingridients) {
-    //         if (item.getAttribute('data-ingridient-id') == this.id) {
-    //             item.classList.toggle('active');
-    //         }
-    //     }
-    // }
+    removeActiveClass() {
+        this.currentWrapper.classList.remove('active');
+    }
 
     render() {
         const wrapper = document.createElement('div');
@@ -46,7 +27,6 @@ export default class IngridientCard {
         wrapper.setAttribute('data-ingridient-id', this.id);
         wrapper.addEventListener('click', () => {
             this.eventHandler.emit('addIngridient', this);
-            this.active();
         });
         this.currentWrapper = wrapper;
 

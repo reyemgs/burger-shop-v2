@@ -110,27 +110,45 @@ export default class Modal {
 
     addIngridient(ingridient) {
         console.clear();
+
         const components = this.currentProduct.components;
         if (ingridient.type === 'single') {
             components[ingridient.category] = ingridient.key;
         } else {
-            components[ingridient.category].push(ingridient.key);
+            const addedIngridient = components[ingridient.category].find(
+                item => item === ingridient.key
+            );
+
+            if (!addedIngridient) {
+                components[ingridient.category].push(ingridient.key);
+                ingridient.addActiveClass();
+                console.table(components);
+                return;
+            }
+
+            this.removeIngridient(ingridient);
+            ingridient.removeActiveClass();
         }
-        console.table(this.currentProduct.components);
+
+        console.table(components);
     }
 
     removeIngridient(ingridient) {
-        console.clear();
         const components = this.currentProduct.components;
         const index = components[ingridient.category].findIndex(item => item === ingridient.key);
         components[ingridient.category].splice(index, 1);
-        console.table(this.currentProduct.components);
+    }
+
+    getIngridientsName(components, category) {
+        const names = [];
+        components.map(item => names.push(this.ingridients[category][item].name));
+        return names.join(', ');
     }
 
     renderDonePage() {
         const product = this.currentProduct;
 
-        const {
+        let {
             sizes: productSizes,
             breads: productBreads,
             vegetables: productVegetables,
@@ -138,7 +156,11 @@ export default class Modal {
             fillings: productFillings,
         } = product.components;
 
-        const { sizes, breads, vegetables, sauces, fillings } = this.ingridients;
+        productVegetables = this.getIngridientsName(productVegetables, 'vegetables');
+        productSauces = this.getIngridientsName(productSauces, 'sauces');
+        productFillings = this.getIngridientsName(productFillings, 'fillings');
+
+        const { sizes, breads } = this.ingridients;
 
         const footer = document.querySelector('.modal-footer');
 
@@ -162,15 +184,15 @@ export default class Modal {
 
         const vegetablesElem = document.createElement('span');
         vegetablesElem.className = 'done-vegetables';
-        vegetablesElem.innerHTML = `Овощи: `;
+        vegetablesElem.innerHTML = `Овощи: ${productVegetables}`;
 
         const saucesElem = document.createElement('span');
         saucesElem.className = 'done-sauces';
-        saucesElem.innerHTML = `Соусы: `;
+        saucesElem.innerHTML = `Соусы: ${productSauces}`;
 
         const fillingsElem = document.createElement('span');
         fillingsElem.className = 'done-fillings';
-        fillingsElem.innerHTML = `Начинка: `;
+        fillingsElem.innerHTML = `Начинка: ${productFillings}`;
 
         const name = document.createElement('span');
         name.className = 'done-name';
