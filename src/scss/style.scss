@@ -1,4 +1,5 @@
 $yellow: #fad045;
+$yellow-in-basket: #ffad33;
 $yellow-scrollbar: #ff9900;
 $yellow-card: #ff9900d3;
 $yellow-text: #6b581a;
@@ -9,6 +10,7 @@ $grey-border: #999999;
 $body-background: #ececec;
 $description: #3585aa;
 $price: #aa3535;
+$modal-buttons: #cf4040;
 $modal-items: #fa6045;
 $prev-next-buttons: #e6583f;
 
@@ -27,16 +29,15 @@ $prev-next-buttons: #e6583f;
     height: 30px;
     font-weight: bold;
     font-size: 15px;
-    border: 2px solid $modal-items;
-    border-radius: 10px;
     outline: none;
+    border-radius: 10px;
+    border: 2px solid $modal-items;
     color: $white;
     background: $modal-items;
-
+    transition: 0.5s;
     &:hover {
-        background: $yellow-card;
-        border: 2px solid $yellow-scrollbar;
-        color: $yellow-text;
+        background: $modal-buttons;
+        border: 2px solid $modal-buttons;
     }
 }
 
@@ -197,7 +198,15 @@ header {
                 font-size: 18px;
                 font-weight: bold;
                 background: $yellow;
+                border: 2px solid $yellow;
                 border-radius: 5px;
+                outline: none;
+                transition: 0.5s;
+                &:hover {
+                    background: $yellow-in-basket;
+                    border: 2px solid $yellow-in-basket;
+                    transform: scale(1.05, 1.05);
+                }
             }
         }
     }
@@ -411,6 +420,7 @@ header {
                 font-weight: bold;
                 color: $yellow-text;
                 background-color: $white;
+                transition: 0.2s;
                 -webkit-user-select: none;
                 &:first-child {
                     border-top-left-radius: 10px;
@@ -421,6 +431,7 @@ header {
                     border-bottom-right-radius: 10px;
                 }
                 &.active {
+                    transform: scale(1, 1);
                     background: $modal-items;
                     color: white;
                 }
@@ -441,6 +452,7 @@ header {
             height: 280px;
             margin: 5px;
             padding: 5px;
+            transition: 0.3s;
             -webkit-user-select: none;
             &.active {
                 background: linear-gradient(45deg, $yellow, $yellow-card);
@@ -457,6 +469,7 @@ header {
                 }
             }
             &:hover {
+                transform: scale(1.05, 1.05);
                 background: $yellow-sidebar;
                 border-radius: 10px;
                 .ingridient-image {
@@ -626,6 +639,9 @@ header {
     .modal-menu-item {
         font-size: 18px;
         padding: 10px;
+        &.active {
+            transform: scale(1.1, 1.1);
+        }
     }
 }
 
@@ -634,8 +650,6 @@ header {
         width: 40%;
     }
 }
-
-
 
 @media (max-width: 767px) {
     #sidebar-wrapper {
@@ -685,9 +699,11 @@ header {
     .modal-menu-item {
         font-size: 13px;
         padding: 10px;
+        &.active {
+            transform: scale(1.1, 1.1);
+        }
     }
 }
-
 
 @media (max-width: 610px) {
     .modal-wrapper {
@@ -706,6 +722,9 @@ header {
     .modal-menu-item {
         font-size: 12px;
         padding: 10px;
+        &.active {
+            transform: scale(1.1, 1.1);
+        }
     }
 }
 
@@ -713,6 +732,9 @@ header {
     .modal-menu-item {
         font-size: 10px;
         padding: 10px 5px;
+        &.active {
+            transform: scale(1.1, 1.1);
+        }
     }
     .modal-title {
         color: $yellow-text;

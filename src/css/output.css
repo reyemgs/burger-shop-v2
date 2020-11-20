@@ -148,7 +148,15 @@ header .fa-bars {
   font-size: 18px;
   font-weight: bold;
   background: #fad045;
+  border: 2px solid #fad045;
   border-radius: 5px;
+  outline: none;
+  transition: 0.5s;
+}
+#rightside-wrapper .product-card-wrapper .set-quantity-wrapper .in-basket-button:hover {
+  background: #ffad33;
+  border: 2px solid #ffad33;
+  transform: scale(1.05, 1.05);
 }
 
 #sidebar-wrapper {
@@ -345,16 +353,16 @@ header .fa-bars {
   height: 30px;
   font-weight: bold;
   font-size: 15px;
-  border: 2px solid #fa6045;
-  border-radius: 10px;
   outline: none;
+  border-radius: 10px;
+  border: 2px solid #fa6045;
   color: #ffffff;
   background: #fa6045;
+  transition: 0.5s;
 }
 .modal-wrapper .modal-button-wrapper .previous-button:hover {
-  background: #ff9900d3;
-  border: 2px solid #ff9900;
-  color: #6b581a;
+  background: #cf4040;
+  border: 2px solid #cf4040;
 }
 .modal-wrapper .modal-button-wrapper .next-button {
   display: inline;
@@ -362,16 +370,16 @@ header .fa-bars {
   height: 30px;
   font-weight: bold;
   font-size: 15px;
-  border: 2px solid #fa6045;
-  border-radius: 10px;
   outline: none;
+  border-radius: 10px;
+  border: 2px solid #fa6045;
   color: #ffffff;
   background: #fa6045;
+  transition: 0.5s;
 }
 .modal-wrapper .modal-button-wrapper .next-button:hover {
-  background: #ff9900d3;
-  border: 2px solid #ff9900;
-  color: #6b581a;
+  background: #cf4040;
+  border: 2px solid #cf4040;
 }
 .modal-wrapper .items-wrapper {
   padding: 10px;
@@ -390,6 +398,7 @@ header .fa-bars {
   font-weight: bold;
   color: #6b581a;
   background-color: #ffffff;
+  transition: 0.2s;
   -webkit-user-select: none;
 }
 .modal-wrapper .items-wrapper .items-list .modal-menu-item:first-child {
@@ -401,6 +410,7 @@ header .fa-bars {
   border-bottom-right-radius: 10px;
 }
 .modal-wrapper .items-wrapper .items-list .modal-menu-item.active {
+  transform: scale(1, 1);
   background: #fa6045;
   color: white;
 }
@@ -418,6 +428,7 @@ header .fa-bars {
   height: 280px;
   margin: 5px;
   padding: 5px;
+  transition: 0.3s;
   -webkit-user-select: none;
 }
 .modal-wrapper .modal-content .ingridient-wrapper.active {
@@ -435,6 +446,7 @@ header .fa-bars {
   border: 8px solid #fa6045;
 }
 .modal-wrapper .modal-content .ingridient-wrapper:hover {
+  transform: scale(1.05, 1.05);
   background: #fff8e2;
   border-radius: 10px;
 }
@@ -599,6 +611,9 @@ header .fa-bars {
     font-size: 18px;
     padding: 10px;
   }
+  .modal-menu-item.active {
+    transform: scale(1.1, 1.1);
+  }
 }
 @media (max-width: 924px) {
   #sidebar-wrapper {
@@ -651,6 +666,9 @@ header .fa-bars {
     font-size: 13px;
     padding: 10px;
   }
+  .modal-menu-item.active {
+    transform: scale(1.1, 1.1);
+  }
 }
 @media (max-width: 610px) {
   .modal-wrapper.active {
@@ -669,11 +687,17 @@ header .fa-bars {
     font-size: 12px;
     padding: 10px;
   }
+  .modal-menu-item.active {
+    transform: scale(1.1, 1.1);
+  }
 }
 @media (max-width: 400px) {
   .modal-menu-item {
     font-size: 10px;
     padding: 10px 5px;
+  }
+  .modal-menu-item.active {
+    transform: scale(1.1, 1.1);
   }
 
   .modal-title {
