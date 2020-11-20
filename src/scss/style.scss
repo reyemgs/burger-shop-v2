@@ -358,6 +358,8 @@ header {
 .modal-wrapper {
     opacity: 0;
     visibility: hidden;
+    transition: 0.1s;
+    transform: translate(-50%, -50%) scale(0.0, 0.0);
     &.active {
         position: fixed;
         z-index: 1000;
@@ -369,7 +371,8 @@ header {
         left: 50%;
         background: $body-background;
         border-radius: 10px;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%) scale(1.0, 1.0);
+        -webkit-user-select: none;
     }
     .modal-header {
         height: 50px;

@@ -308,6 +308,8 @@ header .fa-hamburger:hover {
 .modal-wrapper {
   opacity: 0;
   visibility: hidden;
+  transition: 0.1s;
+  transform: translate(-50%, -50%) scale(0, 0);
 }
 .modal-wrapper.active {
   position: fixed;
@@ -320,7 +322,8 @@ header .fa-hamburger:hover {
   left: 50%;
   background: #ececec;
   border-radius: 10px;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1, 1);
+  -webkit-user-select: none;
 }
 .modal-wrapper .modal-header {
   height: 50px;
