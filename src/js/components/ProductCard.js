@@ -13,6 +13,8 @@ export default class ProductCard {
         this.components = props.components;
         this.quantity = 1;
 
+        this.addedIngridients = [];
+
         this.eventHandler = handler;
     }
 
@@ -32,6 +34,20 @@ export default class ProductCard {
 
     addInBasket() {
         this.eventHandler.emit('addInBasket', this);
+    }
+
+    addIngridient(ingridient) {
+        const addedIngrdient = this.addedIngridients.find(item => item === ingridient);
+        if (!addedIngrdient) {
+            this.addedIngridients.push(ingridient);
+        }
+    }
+
+    removeIngridient(ingridient) {
+        console.clear();
+        const index = this.addedIngridients.findIndex(item => item === ingridient);
+        this.addedIngridients.splice(index, 1);
+        console.log(this.addedIngridients);
     }
 
     render() {
