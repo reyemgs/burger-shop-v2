@@ -44,6 +44,13 @@ header .fa-bars {
   position: absolute;
   left: 25px;
 }
+header .fa-hamburger {
+  transition: 0.4s;
+}
+header .fa-hamburger:hover {
+  transform: scale(0.8, 0.8) rotate(45deg);
+  color: #bd7100;
+}
 
 #rightside-wrapper {
   display: flex;
@@ -136,7 +143,7 @@ header .fa-bars {
 #rightside-wrapper .product-card-wrapper .set-quantity-wrapper .increase-button .fa-minus-circle:hover,
 #rightside-wrapper .product-card-wrapper .set-quantity-wrapper .decrease-button .fa-plus-circle:hover,
 #rightside-wrapper .product-card-wrapper .set-quantity-wrapper .decrease-button .fa-minus-circle:hover {
-  transform: rotate(180deg);
+  transform: scale(1.2, 1.2) rotate(180deg);
   color: #fa6045;
 }
 #rightside-wrapper .product-card-wrapper .set-quantity-wrapper .in-basket-button {

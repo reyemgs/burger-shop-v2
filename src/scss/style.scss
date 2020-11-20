@@ -89,6 +89,14 @@ header {
         position: absolute;
         left: 25px;
     }
+
+    .fa-hamburger {
+        transition: 0.4s;
+        &:hover {
+            transform: scale(0.8, 0.8) rotate(45deg);
+            color: #bd7100;
+        }
+    }
 }
 
 #rightside-wrapper {
@@ -183,7 +191,7 @@ header {
                 .fa-minus-circle {
                     transition: 0.5s;
                     &:hover {
-                        transform: rotate(180deg);
+                        transform: scale(1.2, 1.2) rotate(180deg);
                         color: $modal-items;
                     }
                 }
