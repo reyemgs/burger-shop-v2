@@ -14,13 +14,10 @@ export default class Modal {
         this.eventHandler.on('addIngridient', ingridient => {
             this.addIngridient(ingridient);
         });
-
-        this.eventHandler.on('removeIngridient', ingridient => {
-            this.removeIngridient(ingridient);
-        });
     }
 
     open(product) {
+        // console.log(product.addedIngridients);
         this.currentPage = 1;
         this.currentProduct = product;
 
@@ -31,7 +28,9 @@ export default class Modal {
 
         document.body.style.overflow = 'hidden';
         content.innerHTML = '';
+
         this.eventHandler.emit('renderIngridientsByCategory', menuItem.category);
+        this.activateIngridients(menuItem.category);
     }
 
     close() {
@@ -66,7 +65,9 @@ export default class Modal {
 
         this.activePage(menuItem);
         content.innerHTML = '';
+
         this.eventHandler.emit('renderIngridientsByCategory', menuItem.category);
+        this.activateIngridients(menuItem.category);
     }
 
     previousPage() {
@@ -78,7 +79,9 @@ export default class Modal {
 
         this.activePage(menuItem);
         content.innerHTML = '';
+
         this.eventHandler.emit('renderIngridientsByCategory', menuItem.category);
+        this.activateIngridients(menuItem.category);
     }
 
     onDonePage(content, menuItem) {
@@ -109,27 +112,48 @@ export default class Modal {
     }
 
     addIngridient(ingridient) {
-        console.clear();
-
-        const components = this.currentProduct.components;
         if (ingridient.type === 'single') {
-            components[ingridient.category] = ingridient.key;
+            this.addSingle(ingridient);
         } else {
-            const addedIngridient = components[ingridient.category].find(
-                item => item === ingridient.key
-            );
+            this.addMultiple(ingridient);
+        }
+    }
 
-            if (!addedIngridient) {
-                components[ingridient.category].push(ingridient.key);
-                ingridient.addActiveClass();
-                console.table(components);
-                return;
-            }
+    addSingle(ingridient) {
+        console.clear();
+        const components = this.currentProduct.components;
+        const product = this.currentProduct;
+        const addedIngridient = product.addedIngridients.find(item => item.key === ingridient.key);
 
-            this.removeIngridient(ingridient);
-            ingridient.removeActiveClass();
+        if (addedIngridient) return;
+
+        this.deactivateIngridients(ingridient.category);
+        components[ingridient.category] = ingridient.key;
+        product.addIngridient(ingridient);
+        ingridient.addActiveClass();
+
+        console.table(components);
+    }
+
+    addMultiple(ingridient) {
+        console.clear();
+        const components = this.currentProduct.components;
+        const product = this.currentProduct;
+        const addedIngridient = components[ingridient.category].find(item => item === ingridient.key);
+
+        if (!addedIngridient) {
+            if (this.isSauces(ingridient)) return;
+
+            components[ingridient.category].push(ingridient.key);
+            product.addIngridient(ingridient);
+            ingridient.addActiveClass();
+            console.table(components);
+            return;
         }
 
+        this.removeIngridient(ingridient);
+        product.removeIngridient(ingridient);
+        ingridient.removeActiveClass();
         console.table(components);
     }
 
@@ -139,10 +163,37 @@ export default class Modal {
         components[ingridient.category].splice(index, 1);
     }
 
+    isSauces(ingridient) {
+        return (
+            ingridient.category === 'sauces' &&
+            this.currentProduct.components[ingridient.category].length === 3
+        );
+    }
+
     getIngridientsName(components, category) {
         const names = [];
         components.map(item => names.push(this.ingridients[category][item].name));
+
+        if (names.length === 0) {
+            return 'Нет';
+        }
+
         return names.join(', ');
+    }
+
+    activateIngridients(category) {
+        if (this.currentProduct.addedIngridients.length === 0) return;
+        const filtered = this.currentProduct.addedIngridients.filter(item => item.category === category);
+        if (filtered.length === 0) return;
+        filtered.map(item => item.addActiveClass());
+    }
+
+    deactivateIngridients(category) {
+        const filtered = this.currentProduct.addedIngridients.filter(item => item.category === category);
+        filtered.map(item => {
+            this.currentProduct.removeIngridient(item);
+            item.removeActiveClass();
+        });
     }
 
     renderDonePage() {
