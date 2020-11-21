@@ -21,6 +21,10 @@ export default class ProductCard {
         this.eventHandler.on('setDefaultIngridients', ingridient =>
             this.setDefaultIngridients(ingridient)
         );
+
+        this.eventHandler.on('increaseQuantity', () => this.increaseQuantity());
+
+        this.eventHandler.on('decreaseQuantity', () => this.decreaseQuantity());
     }
 
     increaseQuantity() {
