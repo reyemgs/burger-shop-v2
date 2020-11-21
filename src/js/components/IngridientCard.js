@@ -32,6 +32,7 @@ export default class IngridientCard {
         wrapper.addEventListener('click', () => {
             this.eventHandler.emit('addIngridient', this);
             this.eventHandler.emit('updateModalPrice');
+            this.eventHandler.emit('updateBasketTotalPrice');
         });
         this.currentWrapper = wrapper;
 
