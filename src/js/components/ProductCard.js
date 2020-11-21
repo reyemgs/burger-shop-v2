@@ -12,6 +12,7 @@ export default class ProductCard {
         this.weight = props.weight;
         this.components = props.components;
         this.quantity = 1;
+        this.priceWithIngridients = this.price;
 
         this.addedIngridients = [];
 
