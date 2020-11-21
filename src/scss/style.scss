@@ -456,7 +456,7 @@ header {
         flex-wrap: wrap;
         justify-content: center;
         width: 100%;
-        height: 32em;
+        max-height: 380px;
         overflow-y: scroll;
         .ingridient-wrapper {
             width: 220px;
