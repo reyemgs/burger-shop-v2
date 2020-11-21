@@ -1383,49 +1383,49 @@
       "pekinka": {
         "name": "Пекинская капуста",
         "description": "",
-        "price": 0,
+        "price": 15,
         "image": "/i/ingredients/vegetables/pekinka.png",
         "type": "multiple"
       },
       "tomato": {
         "name": "Помидор",
         "description": "",
-        "price": 0,
+        "price": 15,
         "image": "/i/ingredients/vegetables/tomato.png",
         "type": "multiple"
       },
       "pickled-cucumber": {
         "name": "Соленый огурец",
         "description": "",
-        "price": 0,
+        "price": 10,
         "image": "/i/ingredients/vegetables/pickled-cucumber.png",
         "type": "multiple"
       },
       "onion-purple": {
         "name": "Красный лук",
         "description": "",
-        "price": 0,
+        "price": 5,
         "image": "/i/ingredients/vegetables/onion-purple.png",
         "type": "multiple"
       },
       "green-peppers-bulgarian": {
         "name": "Болгарский перец",
         "description": "",
-        "price": 0,
+        "price": 10,
         "image": "/i/ingredients/vegetables/green-peppers-bulgarian.png",
         "type": "multiple"
       },
       "olives": {
         "name": "Маслины",
         "description": "",
-        "price": 0,
+        "price": 25,
         "image": "/i/ingredients/vegetables/olives.png",
         "type": "multiple"
       },
       "pepper-hapapeno": {
         "name": "Острый перец Халапеньо",
         "description": "",
-        "price": 0,
+        "price": 20,
         "image": "/i/ingredients/vegetables/pepper-hapapeno.png",
         "type": "multiple"
       }
