@@ -15,6 +15,10 @@ export default class Basket {
             this.renderAddedProducts();
             this.updateTotalPrice();
         });
+
+        this.eventHandler.on('updateBasketTotalPrice', () => {
+            this.updateTotalPrice();
+        });
     }
 
     addProduct(product) {
@@ -36,6 +40,10 @@ export default class Basket {
         const totalPriceLabel = document.querySelector('.basket-total-price');
         this.totalPrice = 0;
         for (const item of this.addedProducts) {
+            if (item.type === 'multiple') {
+                this.totalPrice += item.priceWithIngridients * item.quantity;
+                continue;
+            }
             this.totalPrice += item.price * item.quantity;
         }
         totalPriceLabel.innerHTML = `Итого: ${this.totalPrice} руб.`;
