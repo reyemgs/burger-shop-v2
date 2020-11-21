@@ -235,11 +235,23 @@ export default class Modal {
     }
 
     increaseQuantity() {
-        this.eventHandler.emit('increaseQuantity');
+        if (this.currentProduct.quantity === 99) return;
+        this.currentProduct.quantity += 1;
+        this.currentProduct.updateQuantity();
+        this.eventHandler.emit('changeQuantity');
     }
 
     decreaseQuantity() {
-        this.eventHandler.emit('decreaseQuantity');
+        if (this.currentProduct.quantity === 1) return;
+        else {
+            this.currentProduct.quantity -= 1;
+        }
+        this.currentProduct.updateQuantity();
+        this.eventHandler.emit('changeQuantity');
+    }
+
+    addInBasket() {
+        this.eventHandler.emit('addInBasket', this.currentProduct);
     }
 
     renderDonePage() {
@@ -330,6 +342,10 @@ export default class Modal {
             this.decreaseQuantity();
             this.updateTotalPrice();
             quantity.innerHTML = product.quantity;
+        });
+
+        inBasketButton.addEventListener('click', () => {
+            this.addInBasket();
         });
 
         const content = document.querySelector('.modal-content');
