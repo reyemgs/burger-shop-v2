@@ -132,6 +132,13 @@ export default class Modal {
         price.innerHTML = `Цена: ${this.currentProduct.priceWithIngridients}`;
     }
 
+    updateTotalPrice() {
+        const totalPrice = document.querySelector('.modal-total-price');
+        totalPrice.innerHTML = `Итого: ${
+            this.currentProduct.priceWithIngridients * this.currentProduct.quantity
+        }`;
+    }
+
     calculatePrice() {
         const ingridients = this.currentProduct.addedIngridients;
         this.currentProduct.priceWithIngridients = this.currentProduct.price;
@@ -227,6 +234,14 @@ export default class Modal {
         });
     }
 
+    increaseQuantity() {
+        this.eventHandler.emit('increaseQuantity');
+    }
+
+    decreaseQuantity() {
+        this.eventHandler.emit('decreaseQuantity');
+    }
+
     renderDonePage() {
         const product = this.currentProduct;
 
@@ -287,7 +302,7 @@ export default class Modal {
 
         const totalPrice = document.createElement('span');
         totalPrice.className = 'modal-total-price';
-        totalPrice.innerHTML = `Итого: ${product.priceWithIngridients}`;
+        totalPrice.innerHTML = `Итого: ${product.priceWithIngridients * product.quantity}`;
 
         const quantity = document.createElement('span');
         quantity.className = 'modal-product-quantity';
@@ -304,6 +319,18 @@ export default class Modal {
         const inBasketButton = document.createElement('button');
         inBasketButton.className = 'modal-in-basket';
         inBasketButton.innerHTML = 'В КОРЗИНУ';
+
+        increaseButton.addEventListener('click', () => {
+            this.increaseQuantity();
+            this.updateTotalPrice();
+            quantity.innerHTML = product.quantity;
+        });
+
+        decreaseButton.addEventListener('click', () => {
+            this.decreaseQuantity();
+            this.updateTotalPrice();
+            quantity.innerHTML = product.quantity;
+        });
 
         const content = document.querySelector('.modal-content');
         footer.append(decreaseButton, quantity, increaseButton, totalPrice, inBasketButton);
