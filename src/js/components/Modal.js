@@ -21,7 +21,6 @@ export default class Modal {
     }
 
     open(product) {
-        // console.log(product.addedIngridients);
         this.currentPage = 1;
         this.currentProduct = product;
 
@@ -155,7 +154,6 @@ export default class Modal {
     }
 
     addSingle(ingridient) {
-        console.clear();
         const components = this.currentProduct.components;
         const product = this.currentProduct;
         const addedIngridient = product.addedIngridients.find(item => item.key === ingridient.key);
@@ -167,12 +165,9 @@ export default class Modal {
         product.addIngridient(ingridient);
         this.calculatePrice();
         ingridient.addActiveClass();
-
-        console.table(components);
     }
 
     addMultiple(ingridient) {
-        console.clear();
         const components = this.currentProduct.components;
         const product = this.currentProduct;
         const addedIngridient = components[ingridient.category].find(item => item === ingridient.key);
@@ -184,7 +179,6 @@ export default class Modal {
             product.addIngridient(ingridient);
             this.calculatePrice();
             ingridient.addActiveClass();
-            console.table(components);
             return;
         }
 
@@ -192,7 +186,6 @@ export default class Modal {
         product.removeIngridient(ingridient);
         this.calculatePrice();
         ingridient.removeActiveClass();
-        console.table(components);
     }
 
     removeIngridient(ingridient) {
