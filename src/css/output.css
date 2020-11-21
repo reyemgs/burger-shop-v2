@@ -164,6 +164,7 @@ header .fa-hamburger:hover {
   background: #ffad33;
   border: 2px solid #ffad33;
   transform: scale(1.05, 1.05);
+  font-size: 19px;
 }
 
 #sidebar-wrapper {
@@ -543,11 +544,19 @@ header .fa-hamburger:hover {
   width: 130px;
   height: 35px;
   color: #6b581a;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: bold;
-  outline: none;
   background: #fad045;
-  border-radius: 8px;
+  border: 2px solid #fad045;
+  border-radius: 5px;
+  outline: none;
+  transition: 0.3s;
+}
+.modal-wrapper .modal-footer .modal-in-basket:hover {
+  background: #ffad33;
+  border: 2px solid #ffad33;
+  transform: scale(1.05, 1.05);
+  font-size: 17px;
 }
 .modal-wrapper .modal-footer .modal-price {
   display: block;
@@ -582,8 +591,17 @@ header .fa-hamburger:hover {
   padding: 5px 10px;
   color: #6b581a;
 }
-.modal-wrapper .modal-footer .modal-increase-button:hover,
-.modal-wrapper .modal-footer .modal-decrease-button:hover {
+.modal-wrapper .modal-footer .modal-increase-button .fa-plus-circle,
+.modal-wrapper .modal-footer .modal-increase-button .fa-minus-circle,
+.modal-wrapper .modal-footer .modal-decrease-button .fa-plus-circle,
+.modal-wrapper .modal-footer .modal-decrease-button .fa-minus-circle {
+  transition: 0.3s;
+}
+.modal-wrapper .modal-footer .modal-increase-button .fa-plus-circle:hover,
+.modal-wrapper .modal-footer .modal-increase-button .fa-minus-circle:hover,
+.modal-wrapper .modal-footer .modal-decrease-button .fa-plus-circle:hover,
+.modal-wrapper .modal-footer .modal-decrease-button .fa-minus-circle:hover {
+  transform: scale(1.2, 1.2) rotate(180deg);
   color: #fa6045;
 }
 
