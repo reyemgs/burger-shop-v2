@@ -55,7 +55,7 @@ export default class ProductCard {
     }
 
     setDefaultIngridients(ingridient) {
-        if (this.category === 'sandwiches' && this.components[ingridient.category] === ingridient.key) {
+        if (this.type === 'multiple' && this.components[ingridient.category] === ingridient.key) {
             this.addedIngridients.push(ingridient);
         }
     }
