@@ -79,6 +79,11 @@ export default class Modal {
         if (this.currentPage === 1) return;
 
         this.currentPage -= 1;
+
+        if (this.currentPage === this.navigationItems.length - 1) {
+            this.createPrice();
+        }
+
         const content = document.querySelector('.modal-content');
         const menuItem = this.getMenuItem(this.currentPage);
 
@@ -284,7 +289,31 @@ export default class Modal {
         image.className = 'product-image';
         image.setAttribute('src', `./js/data${product.image}`);
 
+        const footer = document.querySelector('.modal-footer');
+        footer.innerHTML = '';
+
+        const totalPrice = document.createElement('span');
+        totalPrice.className = 'modal-total-price';
+        totalPrice.innerHTML = `Итого: ${product.priceWithIngridients}`;
+
+        const quantity = document.createElement('span');
+        quantity.className = 'modal-product-quantity';
+        quantity.innerHTML = product.quantity;
+
+        const increaseButton = document.createElement('div');
+        increaseButton.className = 'modal-increase-button';
+        increaseButton.innerHTML = '<i class="fas fa-plus-circle"></i>';
+
+        const decreaseButton = document.createElement('div');
+        decreaseButton.className = 'modal-decrease-button';
+        decreaseButton.innerHTML = '<i class="fas fa-minus-circle"></i>';
+
+        const inBasketButton = document.createElement('button');
+        inBasketButton.className = 'modal-in-basket';
+        inBasketButton.innerHTML = 'В КОРЗИНУ';
+
         const content = document.querySelector('.modal-content');
+        footer.append(decreaseButton, quantity, increaseButton, totalPrice, inBasketButton);
         info.append(sizeElem, breadElem, vegetablesElem, saucesElem, fillingsElem);
         wrapper.append(header, info, name);
         content.append(image, wrapper);
