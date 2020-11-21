@@ -13,6 +13,7 @@ export default class ProductCard {
         this.components = props.components;
         this.quantity = 1;
         this.priceWithIngridients = this.price;
+        this.quantityElem = null;
 
         this.addedIngridients = [];
 
@@ -21,10 +22,6 @@ export default class ProductCard {
         this.eventHandler.on('setDefaultIngridients', ingridient =>
             this.setDefaultIngridients(ingridient)
         );
-
-        this.eventHandler.on('increaseQuantity', () => this.increaseQuantity());
-
-        this.eventHandler.on('decreaseQuantity', () => this.decreaseQuantity());
     }
 
     increaseQuantity() {
@@ -53,16 +50,18 @@ export default class ProductCard {
     }
 
     removeIngridient(ingridient) {
-        console.clear();
         const index = this.addedIngridients.findIndex(item => item === ingridient);
         this.addedIngridients.splice(index, 1);
-        console.log(this.addedIngridients);
     }
 
     setDefaultIngridients(ingridient) {
         if (this.type === 'multiple' && this.components[ingridient.category] === ingridient.key) {
             this.addedIngridients.push(ingridient);
         }
+    }
+
+    updateQuantity() {
+        this.quantityElem.innerHTML = this.quantity;
     }
 
     render() {
@@ -132,6 +131,8 @@ export default class ProductCard {
             }
             this.addInBasket();
         });
+
+        this.quantityElem = quantity;
 
         quantityWrapper.append(quantityLabel, decreaseButton, quantity, increaseButton, inBasketButton);
         productCardWrapper.append(market, image, name, description, price, quantityWrapper);
