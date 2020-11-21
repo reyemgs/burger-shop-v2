@@ -14,6 +14,10 @@ export default class Modal {
         this.eventHandler.on('addIngridient', ingridient => {
             this.addIngridient(ingridient);
         });
+
+        this.eventHandler.on('updateModalPrice', () => {
+            this.updatePrice();
+        });
     }
 
     open(product) {
@@ -31,6 +35,7 @@ export default class Modal {
 
         this.eventHandler.emit('renderIngridientsByCategory', menuItem.category);
         this.activateIngridients(menuItem.category);
+        this.createPrice();
     }
 
     close() {
@@ -107,6 +112,31 @@ export default class Modal {
         }
     }
 
+    createPrice() {
+        const footer = document.querySelector('.modal-footer');
+        footer.innerHTML = '';
+
+        const price = document.createElement('span');
+        price.className = 'modal-price';
+        price.innerHTML = `Цена: ${this.currentProduct.priceWithIngridients}`;
+
+        footer.append(price);
+    }
+
+    updatePrice() {
+        const price = document.querySelector('.modal-price');
+        price.innerHTML = `Цена: ${this.currentProduct.priceWithIngridients}`;
+    }
+
+    calculatePrice() {
+        const ingridients = this.currentProduct.addedIngridients;
+        this.currentProduct.priceWithIngridients = this.currentProduct.price;
+
+        for (const ingridient of ingridients) {
+            this.currentProduct.priceWithIngridients += ingridient.price;
+        }
+    }
+
     getMenuItem(id) {
         return this.navigationItems.find(item => item.id === id);
     }
@@ -130,6 +160,7 @@ export default class Modal {
         this.deactivateIngridients(ingridient.category);
         components[ingridient.category] = ingridient.key;
         product.addIngridient(ingridient);
+        this.calculatePrice();
         ingridient.addActiveClass();
 
         console.table(components);
@@ -146,6 +177,7 @@ export default class Modal {
 
             components[ingridient.category].push(ingridient.key);
             product.addIngridient(ingridient);
+            this.calculatePrice();
             ingridient.addActiveClass();
             console.table(components);
             return;
@@ -153,6 +185,7 @@ export default class Modal {
 
         this.removeIngridient(ingridient);
         product.removeIngridient(ingridient);
+        this.calculatePrice();
         ingridient.removeActiveClass();
         console.table(components);
     }
@@ -212,8 +245,6 @@ export default class Modal {
         productFillings = this.getIngridientsName(productFillings, 'fillings');
 
         const { sizes, breads } = this.ingridients;
-
-        const footer = document.querySelector('.modal-footer');
 
         const wrapper = document.createElement('div');
         wrapper.className = 'done-wrapper';
