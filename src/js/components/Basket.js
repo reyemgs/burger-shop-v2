@@ -29,9 +29,13 @@ export default class Basket {
         this.renderAddedProducts();
     }
 
-    // TODO: update quantity when remove (category)
     removeProduct(product) {
         const index = this.addedProducts.findIndex(item => item === product);
+        const currentProduct = this.addedProducts[index];
+
+        currentProduct.quantity = 1;
+        currentProduct.updateQuantity();
+
         this.addedProducts.splice(index, 1);
         this.renderAddedProducts();
     }
