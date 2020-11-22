@@ -28,6 +28,8 @@ class App {
         this.eventHandler.on('renderIngridientsByCategory', category => {
             this.renderIngridientsByCategory(category);
         });
+
+        this.eventHandler.on('resetProduct', () => this.resetProduct());
     }
 
     async request(url) {
@@ -101,6 +103,12 @@ class App {
         const filtered = this.ingridientCards.filter(item => item.category === category);
         for (const ingridient of filtered) {
             ingridient.render();
+        }
+    }
+
+    resetProduct() {
+        for (const ingridient of this.ingridientCards) {
+            this.eventHandler.emit('setDefaultIngridients', ingridient);
         }
     }
 }
