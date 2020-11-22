@@ -35,6 +35,7 @@ export default class Basket {
 
         currentProduct.quantity = 1;
         currentProduct.updateQuantity();
+        currentProduct.resetDefault();
 
         this.addedProducts.splice(index, 1);
         this.renderAddedProducts();
