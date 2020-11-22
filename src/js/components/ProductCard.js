@@ -60,6 +60,20 @@ export default class ProductCard {
         }
     }
 
+    resetDefault() {
+        const defaultComponents = {
+            sizes: '1x',
+            breads: 'white-italian',
+            vegetables: [],
+            sauces: [],
+            fillings: [],
+        };
+
+        this.components = defaultComponents;
+        this.addedIngridients = [];
+        this.eventHandler.emit('resetProduct');
+    }
+
     updateQuantity() {
         this.quantityElem.innerHTML = this.quantity;
     }
@@ -93,6 +107,7 @@ export default class ProductCard {
         inBasketButton.className = 'in-basket-button';
         inBasketButton.setAttribute('data-product-card-id', this.id);
         inBasketButton.innerHTML = 'В КОРЗИНУ';
+        this.inBasketButton = inBasketButton;
 
         const quantityWrapper = document.createElement('div');
         quantityWrapper.className = 'set-quantity-wrapper';
