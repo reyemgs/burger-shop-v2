@@ -156,7 +156,7 @@ export default class ProductCard {
             if (this.type === 'multiple') {
                 this.eventHandler.emit('openModal', this);
                 return;
-            }
+            } else if (this.inBasket) return;
             this.addInBasket();
         });
 
