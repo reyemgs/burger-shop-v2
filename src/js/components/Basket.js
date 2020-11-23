@@ -4,6 +4,8 @@ export default class Basket {
         this.addedProducts = [];
         this.totalPrice = 0;
 
+        this.productWrapper = null;
+
         this.eventHandler = handler;
 
         this.eventHandler.on('addInBasket', product => {
@@ -27,6 +29,11 @@ export default class Basket {
             this.addedProducts.push(product);
         }
         this.renderAddedProducts();
+        this.productWrapper.classList.add(
+            'animate__animated',
+            'animate__bounceInLeft',
+            'animate__faster'
+        );
     }
 
     removeProduct(product) {
@@ -60,7 +67,8 @@ export default class Basket {
         contentWrapper.innerHTML = '';
         this.addedProducts.map(item => {
             const productWrapper = document.createElement('div');
-            productWrapper.className = 'basket-product';
+            productWrapper.classList.add('basket-product');
+            this.productWrapper = productWrapper;
 
             const productName = document.createElement('span');
             productName.className = 'basket-product-name';

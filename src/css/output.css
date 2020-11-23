@@ -1,3 +1,7 @@
+:root {
+  --animate-delay: 0.1s;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -137,13 +141,13 @@ header .fa-hamburger:hover {
 #rightside-wrapper .product-card-wrapper .set-quantity-wrapper .increase-button .fa-minus-circle,
 #rightside-wrapper .product-card-wrapper .set-quantity-wrapper .decrease-button .fa-plus-circle,
 #rightside-wrapper .product-card-wrapper .set-quantity-wrapper .decrease-button .fa-minus-circle {
-  transition: 0.3s;
+  transition: 0.4s;
 }
 #rightside-wrapper .product-card-wrapper .set-quantity-wrapper .increase-button .fa-plus-circle:hover,
 #rightside-wrapper .product-card-wrapper .set-quantity-wrapper .increase-button .fa-minus-circle:hover,
 #rightside-wrapper .product-card-wrapper .set-quantity-wrapper .decrease-button .fa-plus-circle:hover,
 #rightside-wrapper .product-card-wrapper .set-quantity-wrapper .decrease-button .fa-minus-circle:hover {
-  transform: scale(1.2, 1.2) rotate(180deg);
+  transform: scale(1.4, 1.4) rotate(180deg);
   color: #fa6045;
 }
 #rightside-wrapper .product-card-wrapper .set-quantity-wrapper .in-basket-button {
@@ -163,8 +167,7 @@ header .fa-hamburger:hover {
 #rightside-wrapper .product-card-wrapper .set-quantity-wrapper .in-basket-button:hover {
   background: #ffad33;
   border: 2px solid #ffad33;
-  transform: scale(1.05, 1.05);
-  font-size: 19px;
+  transform: scale(1.15, 1.15);
 }
 
 #sidebar-wrapper {
@@ -189,13 +192,16 @@ header .fa-hamburger:hover {
   font-weight: bold;
   list-style: none;
   color: #6b581a;
+  transform: scale(1, 1);
+  transition: 0.15s ease;
 }
 #sidebar-wrapper .menu-list .menu-item.active {
-  background: linear-gradient(45deg, #fad045, #ff9900d3);
-  border-bottom: 2px solid #ff9900d3;
+  background: linear-gradient(45deg, #fad045, #ff9900);
+  border-bottom: 2px solid #ff9900;
+  transform: scale(1.03, 1.03);
 }
 #sidebar-wrapper .menu-list .menu-item:hover {
-  background: linear-gradient(45deg, #fad045, #ff9900d3);
+  background: linear-gradient(45deg, #fad045, #ff9900);
 }
 #sidebar-wrapper .menu-list .menu-item:first-child {
   border-top-right-radius: 8px;
@@ -252,6 +258,7 @@ header .fa-hamburger:hover {
   margin: auto;
   padding: 5px 15px;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 #sidebar-wrapper .basket .basket-body .basket-content-wrapper .basket-product {
   font-size: 12px;
@@ -284,9 +291,12 @@ header .fa-hamburger:hover {
   float: right;
   height: 18px;
   color: #6b581a;
+  transform: scale(1, 1);
+  transition: 0.3s;
 }
 #sidebar-wrapper .basket .basket-body .basket-content-wrapper .basket-product .remove-button:hover {
   color: #fa6045;
+  transform: scale(1.4, 1.4);
 }
 #sidebar-wrapper .basket .basket-body .basket-total-price {
   display: block;
@@ -300,10 +310,23 @@ header .fa-hamburger:hover {
 #sidebar-wrapper .basket .basket-body .order-button {
   display: block;
   margin: auto;
-  text-align: center;
+  width: 150px;
+  height: 30px;
+  color: #6b581a;
+  font-size: 14px;
   font-weight: bold;
-  background: #757575;
-  color: white;
+  background: #fad045;
+  border: 2px solid #fad045;
+  border-radius: 5px;
+  outline: none;
+  transition: 0.3s;
+}
+#sidebar-wrapper .basket .basket-body .order-button:hover {
+  background: #fa6045;
+  border: 2px solid #fa6045;
+  transform: scale(1.15, 1.15);
+  font-size: 14px;
+  color: #fff8e2;
 }
 
 .modal-wrapper {
@@ -445,14 +468,14 @@ header .fa-hamburger:hover {
   -webkit-user-select: none;
 }
 .modal-wrapper .modal-content .ingridient-wrapper.active {
-  background: linear-gradient(45deg, #fad045, #ff9900d3);
+  background: linear-gradient(45deg, #fad045, #ff9900);
   border-radius: 10px;
 }
 .modal-wrapper .modal-content .ingridient-wrapper.active .ingridient-image {
   border: 8px solid #fa6045;
 }
 .modal-wrapper .modal-content .ingridient-wrapper.active:hover {
-  background: linear-gradient(45deg, #fad045, #ff9900d3);
+  background: linear-gradient(45deg, #fad045, #ff9900);
   border-radius: 10px;
 }
 .modal-wrapper .modal-content .ingridient-wrapper.active:hover .ingridient-image {
@@ -558,7 +581,6 @@ header .fa-hamburger:hover {
   background: #ffad33;
   border: 2px solid #ffad33;
   transform: scale(1.05, 1.05);
-  font-size: 17px;
 }
 .modal-wrapper .modal-footer .modal-price {
   display: block;

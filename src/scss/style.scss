@@ -1,7 +1,7 @@
 $yellow: #fad045;
 $yellow-in-basket: #ffad33;
 $yellow-scrollbar: #ff9900;
-$yellow-card: #ff9900d3;
+$yellow-card: #ff9900;
 $yellow-text: #6b581a;
 $yellow-sidebar: #fff8e2;
 $white: #ffffff;
@@ -41,6 +41,10 @@ $prev-next-buttons: #e6583f;
         border: 2px solid $modal-buttons;
     }
 }
+
+:root {
+    --animate-delay: 0.1s;
+  }
 
 ::-webkit-scrollbar {
     width: 10px;
@@ -190,9 +194,9 @@ header {
 
                 .fa-plus-circle,
                 .fa-minus-circle {
-                    transition: 0.3s;
+                    transition: 0.4s;
                     &:hover {
-                        transform: scale(1.2, 1.2) rotate(180deg);
+                        transform: scale(1.4, 1.4) rotate(180deg);
                         color: $modal-items;
                     }
                 }
@@ -214,8 +218,7 @@ header {
                 &:hover {
                     background: $yellow-in-basket;
                     border: 2px solid $yellow-in-basket;
-                    transform: scale(1.05, 1.05);
-                    font-size: 19px;
+                    transform: scale(1.15, 1.15);
                 }
             }
         }
@@ -242,9 +245,12 @@ header {
             font-weight: bold;
             list-style: none;
             color: $yellow-text;
+            transform: scale(1, 1);
+            transition: .15s ease;
             &.active {
                 background: linear-gradient(45deg, $yellow, $yellow-card);
                 border-bottom: 2px solid $yellow-card;
+                transform: scale(1.03, 1.03);
             }
             &:hover {
                 background: linear-gradient(45deg, $yellow, $yellow-card);
@@ -300,6 +306,7 @@ header {
                 margin: auto;
                 padding: 5px 15px;
                 overflow-y: scroll;
+                overflow-x: hidden;
                 .basket-product {
                     font-size: 12px;
                     padding: 35px 0px;
@@ -330,8 +337,11 @@ header {
                         float: right;
                         height: 18px;
                         color: $yellow-text;
+                        transform: scale(1, 1);
+                        transition: 0.3s;
                         &:hover {
                             color: $modal-items;
+                            transform: scale(1.4, 1.4);
                         }
                     }
                 }
@@ -348,10 +358,23 @@ header {
             .order-button {
                 display: block;
                 margin: auto;
-                text-align: center;
+                width: 150px;
+                height: 30px;
+                color: $yellow-text;
+                font-size: 14px;
                 font-weight: bold;
-                background: $grey-button;
-                color: white;
+                background: $yellow;
+                border: 2px solid $yellow;
+                border-radius: 5px;
+                outline: none;
+                transition: 0.3s;
+                &:hover {
+                    background: $modal-items;
+                    border: 2px solid $modal-items;
+                    transform: scale(1.15, 1.15);
+                    font-size: 14px;
+                    color: $yellow-sidebar;
+                }
             }
         }
     }
@@ -585,7 +608,6 @@ header {
                 background: $yellow-in-basket;
                 border: 2px solid $yellow-in-basket;
                 transform: scale(1.05, 1.05);
-                font-size: 17px;
             }
         }
         .modal-price {
