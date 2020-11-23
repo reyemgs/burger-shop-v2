@@ -1,7 +1,3 @@
-:root {
-  --animate-delay: 0.1s;
-}
-
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -340,7 +336,6 @@ header .fa-hamburger:hover {
   opacity: 1;
   visibility: visible;
   width: 55%;
-  max-height: 80%;
   top: 50%;
   left: 50%;
   background: #ececec;
@@ -455,7 +450,6 @@ header .fa-hamburger:hover {
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
-  height: 500px;
   overflow-y: scroll;
 }
 .modal-wrapper .modal-content .ingridient-wrapper {
@@ -652,6 +646,76 @@ header .fa-hamburger:hover {
   opacity: 0.6;
 }
 
+@media (min-height: 1000px) {
+  .basket-content-wrapper {
+    max-height: 250px;
+  }
+
+  .modal-wrapper.active {
+    height: 80%;
+  }
+
+  .modal-content {
+    height: 70%;
+  }
+}
+@media (max-height: 1000px) {
+  .basket-content-wrapper {
+    max-height: 250px;
+  }
+
+  .modal-wrapper.active {
+    height: 80%;
+  }
+
+  .modal-content {
+    height: 70%;
+  }
+}
+@media (max-height: 924px) {
+  .basket-content-wrapper {
+    max-height: 220px;
+  }
+
+  .modal-wrapper.active {
+    height: 80%;
+  }
+
+  .modal-content {
+    height: 70%;
+  }
+}
+@media (max-height: 852px) {
+  .basket-content-wrapper {
+    max-height: 200px;
+  }
+
+  .modal-wrapper.active {
+    height: 80%;
+  }
+
+  .modal-content {
+    height: 60%;
+  }
+}
+@media (max-height: 768px) {
+  .basket-content-wrapper {
+    max-height: 100px;
+  }
+
+  .modal-wrapper.active {
+    height: 100%;
+  }
+
+  .modal-content {
+    height: 60%;
+  }
+}
+@media (max-height: 676px) {
+  .modal-content {
+    height: 52%;
+  }
+}
 @media (min-width: 768px) {
   .modal-title {
     font-size: 30px;
@@ -669,21 +733,6 @@ header .fa-hamburger:hover {
 @media (max-width: 924px) {
   #sidebar-wrapper {
     width: 40%;
-  }
-}
-@media (max-height: 924px) {
-  .basket-content-wrapper {
-    max-height: 220px;
-  }
-}
-@media (max-height: 852px) {
-  .basket-content-wrapper {
-    max-height: 200px;
-  }
-}
-@media (max-height: 768px) {
-  .basket-content-wrapper {
-    max-height: 150px;
   }
 }
 @media (max-width: 767px) {
@@ -771,4 +820,4 @@ header .fa-bars {
   }
 }
 
-/*# sourceMappingURL=output.css.map */
+/*# sourceMappingURL=main.css.map */

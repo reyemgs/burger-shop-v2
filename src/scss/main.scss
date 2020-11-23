@@ -1,50 +1,5 @@
-$yellow: #fad045;
-$yellow-in-basket: #ffad33;
-$yellow-scrollbar: #ff9900;
-$yellow-card: #ff9900;
-$yellow-text: #6b581a;
-$yellow-sidebar: #fff8e2;
-$white: #ffffff;
-$grey-button: #757575;
-$grey-border: #999999;
-$body-background: #ececec;
-$description: #3585aa;
-$price: #aa3535;
-$modal-buttons: #cf4040;
-$modal-items: #fa6045;
-$prev-next-buttons: #e6583f;
-
-@mixin border-top-radius {
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
-}
-
-@mixin border-bottom-radius {
-    border-bottom-right-radius: 8px;
-    border-bottom-left-radius: 8px;
-}
-
-@mixin prev-next-buttons {
-    width: 80px;
-    height: 30px;
-    font-weight: bold;
-    margin: 0px 5px;
-    font-size: 15px;
-    outline: none;
-    border-radius: 10px;
-    border: 2px solid $modal-items;
-    color: $white;
-    background: $modal-items;
-    transition: 0.5s;
-    &:hover {
-        background: $modal-buttons;
-        border: 2px solid $modal-buttons;
-    }
-}
-
-:root {
-    --animate-delay: 0.1s;
-  }
+@import "colors.scss";
+@import "mixin.scss";
 
 ::-webkit-scrollbar {
     width: 10px;
@@ -390,7 +345,6 @@ header {
         opacity: 1;
         visibility: visible;
         width: 55%;
-        max-height: 80%;
         top: 50%;
         left: 50%;
         background: $body-background;
@@ -480,7 +434,6 @@ header {
         flex-wrap: wrap;
         justify-content: center;
         width: 100%;
-        height: 500px;
         overflow-y: scroll;
         .ingridient-wrapper {
             width: 220px;
@@ -677,131 +630,4 @@ header {
     }
 }
 
-@media (min-width: 768px) {
-    .modal-title {
-        font-size: 30px;
-        color: $white;
-    }
-
-    .modal-menu-item {
-        font-size: 18px;
-        padding: 10px;
-        &.active {
-            transform: scale(1.1, 1.1);
-        }
-    }
-}
-
-@media (max-width: 924px) {
-    #sidebar-wrapper {
-        width: 40%;
-    }
-}
-
-@media (max-height: 924px) {
-    .basket-content-wrapper {
-        max-height: 220px;
-    }
-}
-
-@media (max-height: 852px) {
-    .basket-content-wrapper {
-        max-height: 200px;
-    }
-}
-
-@media (max-height: 768px) {
-    .basket-content-wrapper {
-        max-height: 150px;
-    }
-}
-
-@media (max-width: 767px) {
-    #sidebar-wrapper {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        top: 10px;
-        .menu-list {
-            margin-top: 0px;
-        }
-    }
-
-    #rightside-wrapper {
-        margin: auto;
-        width: 100%;
-        padding-top: 10px;
-        .product-card-wrapper {
-            width: 90%;
-            margin: 20px auto;
-        }
-    }
-
-    header {
-        position: relative;
-
-        span,
-        .fa-bars {
-            line-height: 40px;
-            color: $yellow-text;
-        }
-
-        span {
-            font-size: 30px;
-            font-weight: bold;
-        }
-
-        .fa-bars {
-            visibility: hidden;
-        }
-    }
-
-    .modal-title {
-        font-size: 20px;
-        color: $white;
-    }
-
-    .modal-menu-item {
-        font-size: 13px;
-        padding: 10px;
-        &.active {
-            transform: scale(1.1, 1.1);
-        }
-    }
-}
-
-@media (max-width: 610px) {
-    .modal-wrapper {
-        &.active {
-            width: 100%;
-        }
-    }
-    .modal-title {
-        width: 160px;
-        padding-left: 10px;
-        font-size: 12px;
-        text-align: left;
-        color: $yellow-text;
-    }
-
-    .modal-menu-item {
-        font-size: 12px;
-        padding: 10px;
-        &.active {
-            transform: scale(1.1, 1.1);
-        }
-    }
-}
-
-@media (max-width: 400px) {
-    .modal-menu-item {
-        font-size: 10px;
-        padding: 10px 5px;
-        &.active {
-            transform: scale(1.1, 1.1);
-        }
-    }
-    .modal-title {
-        color: $yellow-text;
-    }
-}
+@import "responsive.scss";
