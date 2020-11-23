@@ -11,8 +11,11 @@ export default class ProductCard {
         this.type = props.type;
         this.weight = props.weight;
         this.components = props.components;
+
         this.quantity = 1;
         this.priceWithIngridients = this.price;
+        this.inBasket = false;
+        this.inBasketButton = null;
         this.quantityElem = null;
 
         this.addedIngridients = [];
@@ -78,6 +81,25 @@ export default class ProductCard {
         this.quantityElem.innerHTML = this.quantity;
     }
 
+    changeButton() {
+        if (this.inBasket) {
+            if (this.type === 'multiple') {
+                this.inBasketButton.innerHTML = 'ИЗМЕНИТЬ';
+                this.inBasketButton.style.background = '#fa6045';
+                this.inBasketButton.style.border = '2px solid #fa6045';
+                this.inBasketButton.style.color = 'white';
+                return;
+            }
+            this.inBasketButton.innerHTML = 'В КОРЗИНЕ';
+            this.inBasketButton.style.background = '#999999';
+            this.inBasketButton.style.border = '2px solid #999999';
+            this.inBasketButton.style.color = 'white';
+        } else {
+            this.inBasketButton.removeAttribute('style');
+            this.inBasketButton.innerHTML = 'В КОРЗИНУ';
+        }
+    }
+
     render() {
         const market = document.createElement('img');
         market.className = 'product-market';
@@ -108,6 +130,7 @@ export default class ProductCard {
         inBasketButton.setAttribute('data-product-card-id', this.id);
         inBasketButton.innerHTML = 'В КОРЗИНУ';
         this.inBasketButton = inBasketButton;
+        this.changeButton();
 
         const quantityWrapper = document.createElement('div');
         quantityWrapper.className = 'set-quantity-wrapper';

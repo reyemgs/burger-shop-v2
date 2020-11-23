@@ -254,6 +254,7 @@ export default class Modal {
     }
 
     addInBasket() {
+        if (this.currentProduct.inBasket) return;
         this.eventHandler.emit('addInBasket', this.currentProduct);
     }
 

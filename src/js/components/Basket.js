@@ -31,6 +31,8 @@ export default class Basket {
         const addedProduct = this.addedProducts.find(item => item === product);
         if (!addedProduct) {
             this.addedProducts.push(product);
+            product.inBasket = true;
+            product.changeButton();
         }
         this.renderAddedProducts();
         this.productWrapper.classList.add(
@@ -46,6 +48,8 @@ export default class Basket {
 
         currentProduct.quantity = 1;
         currentProduct.priceWithIngridients = currentProduct.price;
+        currentProduct.inBasket = false;
+        currentProduct.changeButton();
         currentProduct.updateQuantity();
         currentProduct.resetDefault();
 
