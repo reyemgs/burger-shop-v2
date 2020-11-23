@@ -93,8 +93,17 @@ export default class Basket {
             removeButton.innerHTML = '<i class="fas fa-trash-alt fa-lg"></i>';
 
             removeButton.addEventListener('click', () => {
-                this.removeProduct(item);
-                this.updateTotalPrice();
+                const wrapper = removeButton.closest('.basket-product');
+                wrapper.classList.remove(
+                    'animate__animated',
+                    'animate__bounceInLeft',
+                    'animate__faster'
+                );
+                wrapper.classList.add('animate__animated', 'animate__bounceOutLeft', 'animate__faster');
+                setTimeout(() => {
+                    this.removeProduct(item);
+                    this.updateTotalPrice();
+                }, 300);
             });
 
             if (item.type === 'multiple') {
