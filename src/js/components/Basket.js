@@ -34,6 +34,7 @@ export default class Basket {
         const currentProduct = this.addedProducts[index];
 
         currentProduct.quantity = 1;
+        currentProduct.priceWithIngridients = currentProduct.price;
         currentProduct.updateQuantity();
         currentProduct.resetDefault();
 
