@@ -264,6 +264,19 @@ export default class Modal {
         this.eventHandler.emit('addInBasket', this.currentProduct);
     }
 
+    changeButton() {
+        const inBasketButton = document.querySelector('.modal-in-basket');
+        if (this.currentProduct.inBasket) {
+            inBasketButton.innerHTML = 'В КОРЗИНЕ';
+            inBasketButton.style.background = '#999999';
+            inBasketButton.style.border = '2px solid #999999';
+            inBasketButton.style.color = 'white';
+        } else {
+            inBasketButton.removeAttribute('style');
+            inBasketButton.innerHTML = 'В КОРЗИНУ';
+        }
+    }
+
     renderDonePage() {
         const product = this.currentProduct;
 
@@ -355,6 +368,7 @@ export default class Modal {
         });
 
         inBasketButton.addEventListener('click', () => {
+            if (this.currentProduct.inBasket) return;
             this.addInBasket();
             this.close();
         });
@@ -364,6 +378,7 @@ export default class Modal {
         info.append(sizeElem, breadElem, vegetablesElem, saucesElem, fillingsElem);
         wrapper.append(header, info, name);
         content.append(image, wrapper);
+        this.changeButton();
     }
 
     render() {
