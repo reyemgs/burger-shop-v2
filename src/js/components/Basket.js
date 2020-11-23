@@ -51,7 +51,7 @@ export default class Basket {
         currentProduct.inBasket = false;
         currentProduct.changeButton();
         currentProduct.updateQuantity();
-        if (product.type === 'multiple') {
+        if (currentProduct.type === 'multiple') {
             currentProduct.resetDefault();
         }
 
@@ -120,7 +120,11 @@ export default class Basket {
             const li = document.createElement('li');
             li.className = 'basket-ingridient';
             li.textContent += ingridient.name;
-            ingridientWrapper.append(li);
+            if (ingridient.type === 'single') {
+                ingridientWrapper.prepend(li);
+            } else {
+                ingridientWrapper.append(li);
+            }
         }
         return ingridientWrapper;
     }
