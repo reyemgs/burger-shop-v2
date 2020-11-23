@@ -302,7 +302,6 @@ header {
             .basket-content-wrapper {
                 display: block;
                 width: 90%;
-                max-height: 280px;
                 margin: auto;
                 padding: 5px 15px;
                 overflow-y: scroll;
@@ -696,6 +695,24 @@ header {
 @media (max-width: 924px) {
     #sidebar-wrapper {
         width: 40%;
+    }
+}
+
+@media (max-height: 924px) {
+    .basket-content-wrapper {
+        max-height: 220px;
+    }
+}
+
+@media (max-height: 852px) {
+    .basket-content-wrapper {
+        max-height: 200px;
+    }
+}
+
+@media (max-height: 768px) {
+    .basket-content-wrapper {
+        max-height: 150px;
     }
 }
 
