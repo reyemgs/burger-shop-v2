@@ -248,12 +248,12 @@ header {
             transform: scale(1, 1);
             transition: .15s ease;
             &.active {
-                background: linear-gradient(45deg, $yellow, $yellow-card);
+                background: $yellow;
                 border-bottom: 2px solid $yellow-card;
                 transform: scale(1.03, 1.03);
             }
             &:hover {
-                background: linear-gradient(45deg, $yellow, $yellow-card);
+                background: $yellow;
             }
             &:first-child {
                 @include border-top-radius();

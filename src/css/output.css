@@ -196,12 +196,12 @@ header .fa-hamburger:hover {
   transition: 0.15s ease;
 }
 #sidebar-wrapper .menu-list .menu-item.active {
-  background: linear-gradient(45deg, #fad045, #ff9900);
+  background: #fad045;
   border-bottom: 2px solid #ff9900;
   transform: scale(1.03, 1.03);
 }
 #sidebar-wrapper .menu-list .menu-item:hover {
-  background: linear-gradient(45deg, #fad045, #ff9900);
+  background: #fad045;
 }
 #sidebar-wrapper .menu-list .menu-item:first-child {
   border-top-right-radius: 8px;
