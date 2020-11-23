@@ -64,17 +64,7 @@ export default class ProductCard {
     }
 
     resetDefault() {
-        const defaultComponents = {
-            sizes: '1x',
-            breads: 'white-italian',
-            vegetables: [],
-            sauces: [],
-            fillings: [],
-        };
-
-        this.components = defaultComponents;
-        this.addedIngridients = [];
-        this.eventHandler.emit('resetProduct');
+        this.eventHandler.emit('resetProduct', this);
     }
 
     updateQuantity() {

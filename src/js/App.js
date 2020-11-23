@@ -29,7 +29,7 @@ class App {
             this.renderIngridientsByCategory(category);
         });
 
-        this.eventHandler.on('resetProduct', () => this.resetProduct());
+        this.eventHandler.on('resetProduct', product => this.resetProduct(product));
     }
 
     async request(url) {
@@ -106,9 +106,23 @@ class App {
         }
     }
 
-    resetProduct() {
+    resetProduct(product) {
+        const defaultComponents = {
+            sizes: '1x',
+            breads: 'white-italian',
+            vegetables: [],
+            sauces: [],
+            fillings: [],
+        };
+        product.components = defaultComponents;
+        product.addedIngridients = [];
         for (const ingridient of this.ingridientCards) {
-            this.eventHandler.emit('setDefaultIngridients', ingridient);
+            if (
+                product.type === 'multiple' &&
+                product.components[ingridient.category] === ingridient.key
+            ) {
+                product.addedIngridients.push(ingridient);
+            }
         }
     }
 }
