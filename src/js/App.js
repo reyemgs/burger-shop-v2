@@ -55,7 +55,7 @@ class App {
     initSideBar() {
         this.menuList = new MenuList(this.response.categories, this.eventHandler);
         this.menuList.render();
-        this.menuList.onPage('sandwiches');
+        this.menuList.onPage('pizza');
 
         this.basket = new Basket(this.eventHandler);
         this.basket.render();
