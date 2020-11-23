@@ -172,6 +172,7 @@ export default class Modal {
         product.addIngridient(ingridient);
         this.calculatePrice();
         ingridient.addActiveClass();
+        this.eventHandler.emit('updateIngridients');
     }
 
     addMultiple(ingridient) {
@@ -186,6 +187,7 @@ export default class Modal {
             product.addIngridient(ingridient);
             this.calculatePrice();
             ingridient.addActiveClass();
+            this.eventHandler.emit('updateIngridients');
             return;
         }
 
@@ -193,6 +195,7 @@ export default class Modal {
         product.removeIngridient(ingridient);
         this.calculatePrice();
         ingridient.removeActiveClass();
+        this.eventHandler.emit('updateIngridients');
     }
 
     removeIngridient(ingridient) {

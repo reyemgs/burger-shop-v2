@@ -21,6 +21,10 @@ export default class Basket {
         this.eventHandler.on('updateBasketTotalPrice', () => {
             this.updateTotalPrice();
         });
+
+        this.eventHandler.on('updateIngridients', () => {
+            this.renderAddedProducts();
+        });
     }
 
     addProduct(product) {
@@ -87,9 +91,27 @@ export default class Basket {
                 this.updateTotalPrice();
             });
 
-            productWrapper.append(productName, productQuantity, removeButton);
+            productWrapper.append(
+                productName,
+                productQuantity,
+                removeButton,
+                this.renderIngridients(item)
+            );
             contentWrapper.append(productWrapper);
         });
+    }
+
+    renderIngridients(product) {
+        const ingridientWrapper = document.createElement('ul');
+        ingridientWrapper.className = 'basket-ingridient-wrapper';
+
+        for (const ingridient of product.addedIngridients) {
+            const li = document.createElement('li');
+            li.className = 'basket-ingridient';
+            li.textContent += ingridient.name;
+            ingridientWrapper.append(li);
+        }
+        return ingridientWrapper;
     }
 
     render() {
