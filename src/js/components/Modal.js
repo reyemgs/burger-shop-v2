@@ -34,6 +34,7 @@ export default class Modal {
 
         this.eventHandler.emit('renderIngridientsByCategory', menuItem.category);
         this.activateIngridients(menuItem.category);
+        this.calculatePrice();
         this.createPrice();
     }
 
@@ -346,6 +347,7 @@ export default class Modal {
 
         inBasketButton.addEventListener('click', () => {
             this.addInBasket();
+            this.close();
         });
 
         const content = document.querySelector('.modal-content');
