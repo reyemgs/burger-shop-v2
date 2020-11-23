@@ -51,7 +51,9 @@ export default class Basket {
         currentProduct.inBasket = false;
         currentProduct.changeButton();
         currentProduct.updateQuantity();
-        currentProduct.resetDefault();
+        if (product.type === 'multiple') {
+            currentProduct.resetDefault();
+        }
 
         this.addedProducts.splice(index, 1);
         this.renderAddedProducts();
@@ -95,12 +97,17 @@ export default class Basket {
                 this.updateTotalPrice();
             });
 
-            productWrapper.append(
-                productName,
-                productQuantity,
-                removeButton,
-                this.renderIngridients(item)
-            );
+            if (item.type === 'multiple') {
+                productWrapper.append(
+                    productName,
+                    productQuantity,
+                    removeButton,
+                    this.renderIngridients(item)
+                );
+            } else {
+                productWrapper.append(productName, productQuantity, removeButton);
+            }
+
             contentWrapper.append(productWrapper);
         });
     }
