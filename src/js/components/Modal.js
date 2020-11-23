@@ -34,7 +34,6 @@ export default class Modal {
 
         this.eventHandler.emit('renderIngridientsByCategory', menuItem.category);
         this.activateIngridients(menuItem.category);
-        this.calculatePrice();
         this.createPrice();
     }
 
