@@ -21,7 +21,6 @@ export default class Modal {
     }
 
     open(product) {
-        console.clear();
         this.currentPage = 1;
         this.currentProduct = product;
 
@@ -36,14 +35,9 @@ export default class Modal {
         this.eventHandler.emit('renderIngridientsByCategory', menuItem.category);
         this.activateIngridients(menuItem.category);
         this.createPrice();
-        console.table(this.currentProduct.addedIngridients);
-        console.table(this.currentProduct.components);
     }
 
     close() {
-        console.clear();
-        console.table(this.currentProduct.addedIngridients);
-        console.table(this.currentProduct.components);
         this.currentProduct = null;
         this.currentPage = null;
 
