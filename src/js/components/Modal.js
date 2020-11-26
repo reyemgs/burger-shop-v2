@@ -161,7 +161,7 @@ export default class Modal {
     }
 
     addSingle(ingridient) {
-        const components = this.currentProduct.components;
+        const { components } = this.currentProduct;
         const product = this.currentProduct;
         const addedIngridient = product.addedIngridients.find(item => item.key === ingridient.key);
 
@@ -176,7 +176,7 @@ export default class Modal {
     }
 
     addMultiple(ingridient) {
-        const components = this.currentProduct.components;
+        const { components } = this.currentProduct;
         const product = this.currentProduct;
         const addedIngridient = components[ingridient.category].find(item => item === ingridient.key);
 
@@ -199,7 +199,7 @@ export default class Modal {
     }
 
     removeIngridient(ingridient) {
-        const components = this.currentProduct.components;
+        const { components } = this.currentProduct;
         const index = components[ingridient.category].findIndex(item => item === ingridient.key);
         components[ingridient.category].splice(index, 1);
     }
@@ -231,7 +231,7 @@ export default class Modal {
 
     deactivateIngridients(category) {
         const filtered = this.currentProduct.addedIngridients.filter(item => item.category === category);
-        filtered.map(item => {
+        filtered.forEach(item => {
             this.currentProduct.removeIngridient(item);
             item.removeActiveClass();
         });
@@ -246,9 +246,7 @@ export default class Modal {
 
     decreaseQuantity() {
         if (this.currentProduct.quantity === 1) return;
-        else {
-            this.currentProduct.quantity -= 1;
-        }
+        this.currentProduct.quantity -= 1;
         this.currentProduct.updateQuantity();
         this.eventHandler.emit('changeQuantity');
     }
@@ -275,12 +273,11 @@ export default class Modal {
         const product = this.currentProduct;
 
         let {
-            sizes: productSizes,
-            breads: productBreads,
             vegetables: productVegetables,
             sauces: productSauces,
             fillings: productFillings,
         } = product.components;
+        const { sizes: productSizes, breads: productBreads } = product.components;
 
         productVegetables = this.getIngridientsName(productVegetables, 'vegetables');
         productSauces = this.getIngridientsName(productSauces, 'sauces');

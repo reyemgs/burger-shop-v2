@@ -68,7 +68,7 @@ class App {
 
     initProductCards() {
         let id = 1;
-        for (let product of this.response.menu) {
+        for (const product of this.response.menu) {
             product.id = id++;
             product.marketImage = this.response.markets[product.market].image;
             const productCard = new ProductCard(product, this.eventHandler);
@@ -79,9 +79,9 @@ class App {
     initIngridientCards() {
         let id = 1;
         this.ingridients = this.response.ingridients;
-        for (let category in this.ingridients) {
-            for (let key in this.ingridients[category]) {
-                let ingridient = this.ingridients[category][key];
+        for (const category in this.ingridients) {
+            for (const key in this.ingridients[category]) {
+                const ingridient = this.ingridients[category][key];
                 ingridient.id = id++;
                 ingridient.category = category;
                 ingridient.key = key;
@@ -107,6 +107,7 @@ class App {
     }
 
     resetProduct(product) {
+        const resetedProduct = product;
         const defaultComponents = {
             sizes: '1x',
             breads: 'white-italian',
@@ -114,14 +115,14 @@ class App {
             sauces: [],
             fillings: [],
         };
-        product.components = defaultComponents;
-        product.addedIngridients = [];
+        resetedProduct.components = defaultComponents;
+        resetedProduct.addedIngridients = [];
         for (const ingridient of this.ingridientCards) {
             if (
-                product.type === 'multiple' &&
-                product.components[ingridient.category] === ingridient.key
+                resetedProduct.type === 'multiple' &&
+                resetedProduct.components[ingridient.category] === ingridient.key
             ) {
-                product.addedIngridients.push(ingridient);
+                resetedProduct.addedIngridients.push(ingridient);
             }
         }
     }

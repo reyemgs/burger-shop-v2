@@ -65,9 +65,9 @@ export default class Basket {
         for (const item of this.addedProducts) {
             if (item.type === 'multiple') {
                 this.totalPrice += item.priceWithIngridients * item.quantity;
-                continue;
+            } else {
+                this.totalPrice += item.price * item.quantity;
             }
-            this.totalPrice += item.price * item.quantity;
         }
         totalPriceLabel.innerHTML = `Итого: ${this.totalPrice} руб.`;
     }
@@ -75,7 +75,7 @@ export default class Basket {
     renderAddedProducts() {
         const contentWrapper = document.querySelector('.basket-content-wrapper');
         contentWrapper.innerHTML = '';
-        this.addedProducts.map(item => {
+        for (const item of this.addedProducts) {
             const productWrapper = document.createElement('div');
             productWrapper.classList.add('basket-product');
             this.productWrapper = productWrapper;
@@ -118,7 +118,7 @@ export default class Basket {
             }
 
             contentWrapper.append(productWrapper);
-        });
+        }
     }
 
     renderIngridients(product) {

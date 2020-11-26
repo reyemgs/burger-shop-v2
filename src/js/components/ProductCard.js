@@ -35,9 +35,7 @@ export default class ProductCard {
 
     decreaseQuantity() {
         if (this.quantity === 1) return;
-        else {
-            this.quantity -= 1;
-        }
+        this.quantity -= 1;
         this.eventHandler.emit('changeQuantity');
     }
 
@@ -156,7 +154,8 @@ export default class ProductCard {
             if (this.type === 'multiple') {
                 this.eventHandler.emit('openModal', this);
                 return;
-            } else if (this.inBasket) return;
+            }
+            if (this.inBasket) return;
             this.addInBasket();
         });
 

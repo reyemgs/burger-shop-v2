@@ -1,11 +1,10 @@
 export default class Fetch {
     async loadJSON(url) {
-        let response = await fetch(url);
+        const response = await fetch(url);
         if (response.ok) {
-            let data = await response.json();
+            const data = await response.json();
             return data;
-        } else {
-            console.error(response.status);
         }
+        return console.error(response.status);
     }
 }
