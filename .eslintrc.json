@@ -15,18 +15,18 @@
     "sourceType": "module"
   },
   "rules": {
-    "prettier/prettier": "error",
+    "prettier/prettier": "warn",
     "no-unused-vars": "warn",
     "no-console": "off",
-    "func-names": "warn",
-    "no-process-exit": "off",
-    "object-shorthand": "off",
+    "func-names": "off",
     "class-methods-use-this": "off",
     "no-restricted-syntax": "off",
     "no-plusplus": "off",
     "guard-for-in": "off",
-    "no-param-reassign": "off",
     "import/extensions": [
+      // "no-param-reassign": "off",
+    // "no-process-exit": "off",
+    // "object-shorthand": "off",
       "error",
       "ignorePackages",
       {

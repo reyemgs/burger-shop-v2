@@ -28,11 +28,12 @@ export default class Basket {
     }
 
     addProduct(product) {
+        const currentProduct = product;
         const addedProduct = this.addedProducts.find(item => item === product);
         if (!addedProduct) {
             this.addedProducts.push(product);
-            product.inBasket = true;
-            product.changeButton();
+            currentProduct.inBasket = true;
+            currentProduct.changeButton();
         }
         this.renderAddedProducts();
         this.productWrapper.classList.add(
